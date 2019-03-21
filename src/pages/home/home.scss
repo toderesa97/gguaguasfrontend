@@ -1,0 +1,44 @@
+$standard_mobiles: 500px;
+
+.card-background-page {
+
+  ion-card {
+    position: relative;
+    text-align: center;
+
+    @media screen and (min-width: $standard_mobiles) {
+      max-width: 200px;
+      max-height: 170px;
+    }
+  }
+
+  ion-card:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+  .card-title {
+    position: absolute;
+    top: 25%;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+
+    ion-icon {
+
+      font-size: 1.6em;
+
+    }
+  }
+
+  .card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    top: 65%;
+    width: 100%;
+    color: #fff;
+  }
+
+}
+
