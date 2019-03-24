@@ -13,6 +13,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {MinibusPage} from "../pages/minibus/minibus";
 import {AddMinibusServicePage} from "../pages/add-minibus-service/add-minibus-service";
 import { AddMinibusServiceProvider } from '../providers/add-minibus-service/add-minibus-service-provider';
+import {MinibusDetailPage} from "../pages/minibus-detail/minibus-detail";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AddMinibusServiceProvider } from '../providers/add-minibus-service/add-
     VehiclesPage,
     AddVehiclePage,
     MinibusPage,
-    AddMinibusServicePage
+    AddMinibusServicePage,
+    MinibusDetailPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { AddMinibusServiceProvider } from '../providers/add-minibus-service/add-
     VehiclesPage,
     AddVehiclePage,
     MinibusPage,
-    AddMinibusServicePage
+    AddMinibusServicePage,
+    MinibusDetailPage
   ],
   providers: [
     StatusBar,

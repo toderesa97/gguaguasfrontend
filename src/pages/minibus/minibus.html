@@ -14,4 +14,12 @@
       <div class="card-subtitle">Añadir</div>
     </ion-card>
   </div>
+  <h3>Servicios</h3>
+  <ion-list *ngFor="let service of services">
+    <button ion-item (click)="detailsMinibusService(service?.id)">
+      <h2>{{service?.name}}</h2>
+      <h3>From: {{service?.origin}}</h3>
+      <h3>To: {{service?.destiny}}</h3>
+    </button>
+  </ion-list>
 </ion-content>

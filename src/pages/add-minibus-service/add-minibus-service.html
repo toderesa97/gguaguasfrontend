@@ -35,8 +35,8 @@
     <ion-item>
       <ion-label>Asientos</ion-label>
       <ion-select [(ngModel)]="seats">
-        <ion-option value=6> 6 asientos</ion-option>
-        <ion-option value=10> 10 asientos</ion-option>
+        <ion-option value="6"> 6 asientos</ion-option>
+        <ion-option value="10"> 10 asientos</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
@@ -65,5 +65,5 @@
     </ion-item>
   </ion-list>
   <button (click)="addNewMinibusService()" ion-button>Añadir</button>
-  <span>{{ response?.message }}</span>
+
 </ion-content>

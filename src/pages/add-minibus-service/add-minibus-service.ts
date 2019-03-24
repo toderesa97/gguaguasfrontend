@@ -19,14 +19,12 @@ export class AddMinibusServicePage {
   name: string;
   destiny: string;
   origin: string;
-  seats: number;
+  seats: string;
   company: string;
   directionCompany: string;
   transferDate: string;
   transferTime: string;
   description: string;
-
-  response: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public viewController: ViewController,
@@ -50,10 +48,12 @@ export class AddMinibusServicePage {
                                         this.company, this.directionCompany, this.transferDate,
                                         this.transferTime, this.description).subscribe(
                                           (res: any) => {
-                                            this.response = res;
                                             console.log(res);
                                             this.closeModal();
                                           }, error => console.log(error)
                                         );
   }
+
+
+
 }
