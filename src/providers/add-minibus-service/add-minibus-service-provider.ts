@@ -48,4 +48,9 @@ export class AddMinibusServiceProvider {
     return this.http.post<any>(this.url, param, this.httpOptions);
   }
 
+  deleteById(id, vehicle: string){
+    let param = new HttpParams().append('id', id).append('vehicle', vehicle);
+    return this.http.post<any>(this.url, param, this.httpOptions);
+  }
+
 }

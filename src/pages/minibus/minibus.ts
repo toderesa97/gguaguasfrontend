@@ -55,4 +55,10 @@ export class MinibusPage {
     modal.present();
   }
 
+  removeService(id) {
+    this.addMinibusServiceProvider.deleteById(id, this.vehicle).subscribe(
+      (res) => console.log("Borrado existosamente"),
+      (error) => console.log("Error")
+    );
+  }
 }
