@@ -11,7 +11,7 @@ import {Observable} from "rxjs";
 @Injectable()
 export class ClienteProvider {
   private readonly httpOptions;
-  private url: string = "http://localhost/www/clients.php";
+  private url: string = "http://localhost/gguaguas/client/";
 
   constructor(public http: HttpClient) {
     this.httpOptions = {
@@ -30,17 +30,17 @@ export class ClienteProvider {
       .append('cif', cif)
       .append('razonSocial', razonSocial);
 
-    return this.http.post<any>(this.url, params,this.httpOptions);
+    return this.http.post<any>(this.url.concat("add.php"), params,this.httpOptions);
   }
 
   getById(id){
     let param = new HttpParams().append('id', id);
-    return this.http.post<any>(this.url, param, this.httpOptions);
+    return this.http.post<any>(this.url.concat("get.php"), param, this.httpOptions);
   }
 
   getAll(){
     let param = new HttpParams().append('all',"");
-    return this.http.post<any>(this.url, param, this.httpOptions);
+    return this.http.post<any>(this.url.concat("getAll.php"), param, this.httpOptions);
   }
 
 }

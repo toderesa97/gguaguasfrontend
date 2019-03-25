@@ -5,7 +5,7 @@ import {Observable} from "rxjs";
 @Injectable()
 export class AddMinibusServiceProvider {
 
-  private url:string = "http://localhost/www/ServiceMiniBus.php";
+  private url:string = "http://localhost/gguaguas/ServiceMiniBus.php";
   private readonly httpOptions;
 
   constructor(public http: HttpClient) {

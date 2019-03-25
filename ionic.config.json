@@ -1,6 +1,5 @@
 {
   "name": "gguaguas_v3",
   "integrations": {},
-  "type": "ionic-angular",
-  "app_id": ""
+  "type": "ionic-angular"
 }
