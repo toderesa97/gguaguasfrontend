@@ -8,7 +8,7 @@ import {ServerConfig} from "../serverConfig";
 export class AddMinibusServiceProvider {
 
   private serverConf = new ServerConfig();
-  private url:string = this.serverConf.getServerUrl().concat("gguaguas/ServiceMiniBus.php");
+  private url:string = this.serverConf.getServerUrl().concat("gguaguasbackend/services");
   private readonly httpOptions;
 
   constructor(public http: HttpClient) {
@@ -36,24 +36,25 @@ export class AddMinibusServiceProvider {
       .append('description', description)
       .append('vehicle', vehicle);
 
-    return this.http.post<any>(this.url, params,this.httpOptions);
+    return this.http.post<any>(this.url.concat("/add.php"), params,this.httpOptions);
   }
 
   getById(id, vehicle: string){
     let param = new HttpParams().append('id', id)
       .append('vehicle', vehicle);
-    return this.http.post<any>(this.url, param, this.httpOptions);
+    return this.http.post<any>(this.url.concat("/getById.php"), param, this.httpOptions);
   }
 
   getAll(vehicle: string){
     let param = new HttpParams().append('all',"")
       .append('vehicle',vehicle);
-    return this.http.post<any>(this.url, param, this.httpOptions);
+    return this.http.post<any>(this.url.concat("/getAll.php"), param, this.httpOptions);
   }
 
   deleteById(id, vehicle: string){
-    let param = new HttpParams().append('id', id).append('vehicle', vehicle);
-    return this.http.post<any>(this.url, param, this.httpOptions);
+    let param = new HttpParams().append('id', id)
+      .append('vehicle', vehicle);
+    return this.http.post<any>(this.url.concat("/remove.php"), param, this.httpOptions);
   }
 
 }

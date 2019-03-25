@@ -57,7 +57,10 @@ export class MinibusPage {
 
   removeService(id) {
     this.addMinibusServiceProvider.deleteById(id, this.vehicle).subscribe(
-      (res) => console.log("Borrado existosamente"),
+      (res) => {
+        console.log("Borrado existosamente");
+        this.getMinibusServices();
+      },
       (error) => console.log("Error")
     );
   }
