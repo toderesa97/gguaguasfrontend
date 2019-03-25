@@ -28,4 +28,8 @@ export class HomePage {
   goToMercedesPage() {
     this.navCtrl.push(MinibusPage, {'vehicle':'mercedes'});
   }
+
+  goClientesPage() {
+    this.navCtrl.push();
+  }
 }
