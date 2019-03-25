@@ -11,6 +11,11 @@ import {AddVehiclePage} from "../pages/add-vehicle/add-vehicle";
 import { VehicleProvider } from '../providers/vehicle/vehicle';
 import {HttpClientModule} from "@angular/common/http";
 import {EditVehiclePage} from "../pages/edit-vehicle/edit-vehicle";
+import {MinibusPage} from "../pages/minibus/minibus";
+import {AddMinibusServicePage} from "../pages/add-minibus-service/add-minibus-service";
+import { AddMinibusServiceProvider } from '../providers/add-minibus-service/add-minibus-service-provider';
+import {MinibusDetailPage} from "../pages/minibus-detail/minibus-detail";
+
 
 @NgModule({
   declarations: [
@@ -18,7 +23,10 @@ import {EditVehiclePage} from "../pages/edit-vehicle/edit-vehicle";
     HomePage,
     VehiclesPage,
     AddVehiclePage,
-    EditVehiclePage
+    EditVehiclePage,
+    MinibusPage,
+    AddMinibusServicePage,
+    MinibusDetailPage
   ],
   imports: [
     BrowserModule,
@@ -31,13 +39,17 @@ import {EditVehiclePage} from "../pages/edit-vehicle/edit-vehicle";
     HomePage,
     VehiclesPage,
     AddVehiclePage,
-    EditVehiclePage
+    EditVehiclePage,
+    MinibusPage,
+    AddMinibusServicePage,
+    MinibusDetailPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    VehicleProvider
+    VehicleProvider,
+    AddMinibusServiceProvider
   ]
 })
 export class AppModule {}
