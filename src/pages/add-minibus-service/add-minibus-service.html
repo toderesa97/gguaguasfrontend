@@ -7,7 +7,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Add Minibus service
+      Add {{vehicle}} service
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="closeModal()">
@@ -34,9 +34,18 @@
     </ion-item>
     <ion-item>
       <ion-label>Asientos</ion-label>
-      <ion-select [(ngModel)]="seats">
+      <ion-select *ngIf="vehicle == 'minibus'" [(ngModel)]="seats">
         <ion-option value="6"> 6 asientos</ion-option>
         <ion-option value="10"> 10 asientos</ion-option>
+      </ion-select>
+      <ion-select *ngIf="vehicle == 'mercedes'" [(ngModel)]="seats">
+        <ion-option value="4"> 4 asientos</ion-option>
+        <ion-option value="5"> 5 asientos</ion-option>
+        <ion-option value="6"> 6 asientos</ion-option>
+      </ion-select>
+      <ion-select *ngIf="vehicle == 'vtc'" [(ngModel)]="seats">
+        <ion-option value="4"> 4 asientos</ion-option>
+        <ion-option value="5"> 5 asientos</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>

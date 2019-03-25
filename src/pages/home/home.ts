@@ -18,7 +18,14 @@ export class HomePage {
   }
 
   goToMinibusPage(){
-    this.navCtrl.push(MinibusPage);
+    this.navCtrl.push(MinibusPage, {'vehicle':'minibus'});
   }
 
+  goToVTCPage() {
+    this.navCtrl.push(MinibusPage, {'vehicle':'vtc'});
+  }
+
+  goToMercedesPage() {
+    this.navCtrl.push(MinibusPage, {'vehicle':'mercedes'});
+  }
 }

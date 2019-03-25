@@ -5,7 +5,7 @@ import {Observable} from "rxjs";
 @Injectable()
 export class AddMinibusServiceProvider {
 
-  private url:string = "http://localhost/www/gguaguas/ServiceMiniBus.php";
+  private url:string = "http://localhost/www/ServiceMiniBus.php";
   private readonly httpOptions;
 
   constructor(public http: HttpClient) {
@@ -19,7 +19,7 @@ export class AddMinibusServiceProvider {
 
   add(name: string, destiny: string, origin: string, seats: string,
       company: string,directionCompany: string, transferDate: string,
-      transferTime: string,description: string): Observable<any>{
+      transferTime: string,description: string, vehicle:string): Observable<any>{
 
     let params = new HttpParams().append('add',"")
       .append('name', name)
@@ -30,18 +30,21 @@ export class AddMinibusServiceProvider {
       .append('directionCompany', directionCompany)
       .append('transferDate', transferDate)
       .append('transferTime', transferTime)
-      .append('description', description);
+      .append('description', description)
+      .append('vehicle', vehicle);
 
     return this.http.post<any>(this.url, params,this.httpOptions);
   }
 
-  getById(id){
-    let param = new HttpParams().append('id', id);
+  getById(id, vehicle: string){
+    let param = new HttpParams().append('id', id)
+      .append('vehicle', vehicle);
     return this.http.post<any>(this.url, param, this.httpOptions);
   }
 
-  getAll(){
-    let param = new HttpParams().append('all',"");
+  getAll(vehicle: string){
+    let param = new HttpParams().append('all',"")
+      .append('vehicle',vehicle);
     return this.http.post<any>(this.url, param, this.httpOptions);
   }
 

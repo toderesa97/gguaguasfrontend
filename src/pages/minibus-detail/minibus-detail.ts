@@ -18,10 +18,12 @@ export class MinibusDetailPage {
 
   private id: number;
   public details: any;
+  vehicle: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public addMinibusServiceProvider: AddMinibusServiceProvider,
               public viewController: ViewController) {
+    this.vehicle = this.navParams.get('vehicle');
     this.id = navParams.get('id');
   }
 
@@ -31,7 +33,7 @@ export class MinibusDetailPage {
   }
 
   getDetails(){
-    this.addMinibusServiceProvider.getById(this.id).subscribe(
+    this.addMinibusServiceProvider.getById(this.id, this.vehicle).subscribe(
       (res) => {
         this.details = res[0];
         console.log(res);

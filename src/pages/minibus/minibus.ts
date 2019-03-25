@@ -19,6 +19,7 @@ import {MinibusDetailPage} from "../minibus-detail/minibus-detail";
 export class MinibusPage {
 
   public services;
+  vehicle: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public modalCtrl:ModalController,
@@ -27,11 +28,12 @@ export class MinibusPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MinibusPage');
+    this.vehicle = this.navParams.get('vehicle');
     this.getMinibusServices();
   }
 
   addNewMinibusService() {
-    const modal = this.modalCtrl.create(AddMinibusServicePage);
+    const modal = this.modalCtrl.create(AddMinibusServicePage,{"vehicle": this.vehicle});
     modal.present();
     modal.onDidDismiss((order =>{
       this.getMinibusServices();
@@ -39,7 +41,7 @@ export class MinibusPage {
   }
 
   getMinibusServices(){
-    this.addMinibusServiceProvider.getAll().subscribe(
+    this.addMinibusServiceProvider.getAll(this.vehicle).subscribe(
       (res) => {
         this.services = res;
         console.log(res);
@@ -49,7 +51,7 @@ export class MinibusPage {
   }
 
   detailsMinibusService(id){
-    const modal = this.modalCtrl.create(MinibusDetailPage, {"id": id});
+    const modal = this.modalCtrl.create(MinibusDetailPage, {"id": id, "vehicle": this.vehicle});
     modal.present();
   }
 

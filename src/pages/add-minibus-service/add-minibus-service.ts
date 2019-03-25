@@ -25,6 +25,7 @@ export class AddMinibusServicePage {
   transferDate: string;
   transferTime: string;
   description: string;
+  vehicle: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public viewController: ViewController,
@@ -33,6 +34,7 @@ export class AddMinibusServicePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddMinibusServicePage');
+    this.vehicle = this.navParams.get('vehicle');
   }
 
   closeModal() {
@@ -42,11 +44,11 @@ export class AddMinibusServicePage {
   addNewMinibusService() {
     console.log(this.name, this.destiny, this.origin, this.seats,
                 this.company, this.directionCompany, this.transferDate,
-                this.transferTime, this.description);
+                this.transferTime, this.description, this.vehicle);
 
     this.addMinibusServiceProvider.add(this.name, this.destiny, this.origin, this.seats,
                                         this.company, this.directionCompany, this.transferDate,
-                                        this.transferTime, this.description).subscribe(
+                                        this.transferTime, this.description, this.vehicle).subscribe(
                                           (res: any) => {
                                             console.log(res);
                                             this.closeModal();
