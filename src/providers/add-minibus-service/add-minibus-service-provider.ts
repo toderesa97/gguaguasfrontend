@@ -1,11 +1,14 @@
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
+import {ServerConfig} from "../serverConfig";
+
 
 @Injectable()
 export class AddMinibusServiceProvider {
 
-  private url:string = "http://localhost/gguaguas/ServiceMiniBus.php";
+  private serverConf = new ServerConfig();
+  private url:string = this.serverConf.getServerUrl().concat("gguaguas/ServiceMiniBus.php");
   private readonly httpOptions;
 
   constructor(public http: HttpClient) {

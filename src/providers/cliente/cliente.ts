@@ -1,20 +1,19 @@
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
+import {ServerConfig} from "../serverConfig";
 
-/*
-  Generated class for the ClienteProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class ClienteProvider {
   private readonly httpOptions;
-  private url: string = "http://localhost/gguaguas/client/";
+  private serverConf = new ServerConfig();
+
+  private url:string = this.serverConf.getServerUrl().concat("gguaguas/client/");
+
 
   constructor(public http: HttpClient) {
     this.httpOptions = {
+
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded'
       })
@@ -24,11 +23,11 @@ export class ClienteProvider {
 
   add(name: string, email: string, cif: string, razonSocial: string): Observable<any>{
 
-    let params = new HttpParams().append('add',"")
-      .append('name', name)
+    let params = new HttpParams()
+      .append('nickname', name)
       .append('email', email)
       .append('cif', cif)
-      .append('razonSocial', razonSocial);
+      .append('clientName', razonSocial);
 
     return this.http.post<any>(this.url.concat("add.php"), params,this.httpOptions);
   }

@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import {IonicPage, ModalController, NavController, NavParams} from 'ionic-angular';
-import {AddMinibusServicePage} from "../add-minibus-service/add-minibus-service";
 import {ClienteProvider} from "../../providers/cliente/cliente";
 import {AddClientPage} from "../add-client/add-client";
-import {MinibusDetailPage} from "../minibus-detail/minibus-detail";
 import {ClienteDetailPage} from "../cliente-detail/cliente-detail";
 
 /**
@@ -50,6 +48,7 @@ export class ClientesPage {
   }
 
   detailsCliente(id){
+    console.log("CLICKED client with id ", id);
     const modal = this.modalCtrl.create(ClienteDetailPage, {"id": id});
     modal.present();
   }

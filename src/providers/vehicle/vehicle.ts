@@ -1,10 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {ServerConfig} from "../serverConfig";
 
 @Injectable()
 export class VehicleProvider {
 
-  private url:string = "http://127.0.0.1/gguaguas/";
+  private serverConf = new ServerConfig();
+
+  private url:string = this.serverConf.getServerUrl().concat("gguaguas/");
 
   constructor(public http: HttpClient) {
     console.log('Hello VehicleProvider Provider');

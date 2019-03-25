@@ -32,10 +32,11 @@ export class ClienteDetailPage {
   }
 
   getDetails(){
+
     this.clienteProvider.getById(this.id).subscribe(
       (res) => {
-        this.details = res[0];
         console.log(res);
+        this.details = res;
       },
       (error)=> console.log(error)
     );
