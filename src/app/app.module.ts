@@ -10,13 +10,15 @@ import {VehiclesPage} from "../pages/vehicles/vehicles";
 import {AddVehiclePage} from "../pages/add-vehicle/add-vehicle";
 import { VehicleProvider } from '../providers/vehicle/vehicle';
 import {HttpClientModule} from "@angular/common/http";
+import {EditVehiclePage} from "../pages/edit-vehicle/edit-vehicle";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     VehiclesPage,
-    AddVehiclePage
+    AddVehiclePage,
+    EditVehiclePage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import {HttpClientModule} from "@angular/common/http";
     MyApp,
     HomePage,
     VehiclesPage,
-    AddVehiclePage
+    AddVehiclePage,
+    EditVehiclePage
   ],
   providers: [
     StatusBar,

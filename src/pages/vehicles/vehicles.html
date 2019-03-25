@@ -34,8 +34,10 @@
       <td>{{vechicle?.brand}}</td>
       <td>{{vechicle?.seats}}</td>
       <td>
-        <button (click)="editVehicle(vechicle?.licensePlate)" ion-button color="light">Editar</button>
-        <button (click)="removeVehicle(vechicle?.licensePlate)" ion-button color="danger">Eliminar</button>
+        <div class="vehiclesActionCell">
+          <ion-icon (click)="editVehicle(vechicle?.licensePlate)" ios="ios-create" md="md-create"></ion-icon>
+          <ion-icon (click)="removeVehicle(vechicle?.licensePlate)" ios="ios-trash" md="md-trash"></ion-icon>
+        </div>
       </td>
     </tr>
     </tbody>
