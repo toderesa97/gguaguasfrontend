@@ -20,7 +20,7 @@
   </div>
   <ion-list *ngFor="let cliente of clientes">
     <button ion-item (click)="detailsCliente(cliente?.id)">
-      <h2>{{cliente?.clientName}}</h2>
+      <h2>{{cliente?.nickname}}</h2>
       <h3>email: {{cliente?.email}}</h3>
     </button>
   </ion-list>
