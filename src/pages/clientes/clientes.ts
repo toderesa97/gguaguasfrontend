@@ -4,13 +4,6 @@ import {ClienteProvider} from "../../providers/cliente/cliente";
 import {AddClientPage} from "../add-client/add-client";
 import {ClienteDetailPage} from "../cliente-detail/cliente-detail";
 
-/**
- * Generated class for the ClientesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-clientes',

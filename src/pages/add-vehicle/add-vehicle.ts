@@ -2,13 +2,6 @@ import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, ViewController, Events} from 'ionic-angular';
 import {VehicleProvider} from "../../providers/vehicle/vehicle";
 
-/**
- * Generated class for the AddVehiclePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-add-vehicle',
