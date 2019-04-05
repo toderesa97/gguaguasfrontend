@@ -3,7 +3,7 @@ import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular
 import {AddServiceProvider} from "../../providers/add-service/add-service-provider";
 
 /**
- * Generated class for the MinibusDetailPage page.
+ * Generated class for the ServicesDetailPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,29 +11,29 @@ import {AddServiceProvider} from "../../providers/add-service/add-service-provid
 
 @IonicPage()
 @Component({
-  selector: 'page-minibus-detail',
+  selector: 'page-services-detail',
   templateUrl: 'services-detail.html',
 })
-export class MinibusDetailPage {
+export class ServicesDetailPage {
 
   private id: number;
   public details: any;
   vehicle: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public addMinibusServiceProvider: AddServiceProvider,
+              public addServiceProvider: AddServiceProvider,
               public viewController: ViewController) {
     this.vehicle = this.navParams.get('vehicle');
     this.id = navParams.get('id');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MinibusDetailPage');
+    console.log('ionViewDidLoad ServicesDetailPage');
     this.getDetails();
   }
 
   getDetails(){
-    this.addMinibusServiceProvider.getById(this.id, this.vehicle).subscribe(
+    this.addServiceProvider.getById(this.id, this.vehicle).subscribe(
       (res) => {
         this.details = res[0];
         console.log(res);

@@ -8,7 +8,7 @@
 <ion-content padding>
   <h3>Acciones</h3>
   <div class="card-background-page">
-    <ion-card (click)="addNewMinibusService()">
+    <ion-card (click)="addNewService()">
       <img src="https://tymlinhart.com/img/red-card-background-2.svg"/>
       <div class="card-title"><ion-icon name="add"></ion-icon></div>
       <div class="card-subtitle">Añadir</div>
@@ -17,7 +17,7 @@
   <h3>Servicios</h3>
   <ion-list *ngFor="let service of services">
     <ion-item-sliding>
-      <button ion-item (click)="detailsMinibusService(service?.id)">
+      <button ion-item (click)="detailsService(service?.id)">
         <h2>{{service?.name}}</h2>
         <h3>From: {{service?.origin}}</h3>
         <h3>To: {{service?.destiny}}</h3>

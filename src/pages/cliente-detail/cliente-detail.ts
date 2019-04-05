@@ -27,7 +27,7 @@ export class ClienteDetailPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MinibusDetailPage');
+    console.log('ionViewDidLoad ServicesDetailPage');
     this.getDetails();
   }
 

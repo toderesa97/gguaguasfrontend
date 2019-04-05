@@ -1,47 +1,40 @@
 import { Component } from '@angular/core';
 import {IonicPage, ModalController, NavController, NavParams} from 'ionic-angular';
-import {AddMinibusServicePage} from "../add-service/add-service";
+import {AddServicePage} from "../add-service/add-service";
 import {AddServiceProvider} from "../../providers/add-service/add-service-provider";
-import {MinibusDetailPage} from "../services-detail/services-detail";
-
-/**
- * Generated class for the MinibusPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {ServicesDetailPage} from "../services-detail/services-detail";
 
 @IonicPage()
 @Component({
-  selector: 'page-minibus',
+  selector: 'page-services',
   templateUrl: 'services.html',
 })
-export class MinibusPage {
+export class ServicesPage {
 
   public services;
   vehicle: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public modalCtrl:ModalController,
-              public addMinibusServiceProvider: AddServiceProvider) {
+              public addServiceProvider: AddServiceProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MinibusPage');
+    console.log('ionViewDidLoad ServicesPage');
     this.vehicle = this.navParams.get('vehicle');
-    this.getMinibusServices();
+    this.getServices();
   }
 
-  addNewMinibusService() {
-    const modal = this.modalCtrl.create(AddMinibusServicePage,{"vehicle": this.vehicle});
+  addNewService() {
+    const modal = this.modalCtrl.create(AddServicePage,{"vehicle": this.vehicle});
     modal.present();
     modal.onDidDismiss((order =>{
-      this.getMinibusServices();
+      this.getServices();
     }));
   }
 
-  getMinibusServices(){
-    this.addMinibusServiceProvider.getAll(this.vehicle).subscribe(
+  getServices(){
+    this.addServiceProvider.getAll(this.vehicle).subscribe(
       (res) => {
         this.services = res;
         console.log(res);
@@ -50,16 +43,16 @@ export class MinibusPage {
     );
   }
 
-  detailsMinibusService(id){
-    const modal = this.modalCtrl.create(MinibusDetailPage, {"id": id, "vehicle": this.vehicle});
+  detailsService(id){
+    const modal = this.modalCtrl.create(ServicesDetailPage, {"id": id, "vehicle": this.vehicle});
     modal.present();
   }
 
   removeService(id) {
-    this.addMinibusServiceProvider.deleteById(id, this.vehicle).subscribe(
+    this.addServiceProvider.deleteById(id, this.vehicle).subscribe(
       (res) => {
         console.log("Borrado existosamente");
-        this.getMinibusServices();
+        this.getServices();
       },
       (error) => console.log("Error")
     );
