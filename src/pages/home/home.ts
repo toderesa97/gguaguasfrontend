@@ -3,6 +3,10 @@ import { NavController } from 'ionic-angular';
 import {VehiclesPage} from "../vehicles/vehicles";
 import {MinibusPage} from "../minibus/minibus";
 import {ClientesPage} from "../clientes/clientes";
+import {Storage} from "@ionic/storage";
+import {LoginProvider} from "../../providers/login/login";
+import {LoginPage} from "../login/login";
+
 
 @Component({
   selector: 'page-home',
@@ -10,8 +14,14 @@ import {ClientesPage} from "../clientes/clientes";
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  username:string;
 
+  constructor(public navCtrl: NavController,
+              public storage:Storage,
+              public loginProvider : LoginProvider) {
+    storage.get("session").then((data) => {
+      this.username = data.username;
+    })
   }
 
   goToVehiclesPage() {
@@ -32,5 +42,13 @@ export class HomePage {
 
   goClientesPage() {
     this.navCtrl.push(ClientesPage);
+  }
+
+  logout() {
+    this.loginProvider.logout().then((promise) =>
+      promise.subscribe(
+        (res) => this.navCtrl.setRoot(LoginPage)
+      )
+    )
   }
 }

@@ -19,6 +19,9 @@ import { ClienteProvider } from '../providers/cliente/cliente';
 import {ClienteDetailPage} from "../pages/cliente-detail/cliente-detail";
 import {ClientesPage} from "../pages/clientes/clientes";
 import {AddClientPage} from "../pages/add-client/add-client";
+import { LoginProvider } from '../providers/login/login';
+import {LoginPage} from "../pages/login/login";
+import {IonicStorageModule} from "@ionic/storage";
 
 
 @NgModule({
@@ -33,12 +36,14 @@ import {AddClientPage} from "../pages/add-client/add-client";
     MinibusDetailPage,
     ClienteDetailPage,
     ClientesPage,
-    AddClientPage
+    AddClientPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,7 +57,8 @@ import {AddClientPage} from "../pages/add-client/add-client";
     MinibusDetailPage,
     ClientesPage,
     ClienteDetailPage,
-    AddClientPage
+    AddClientPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
@@ -60,7 +66,8 @@ import {AddClientPage} from "../pages/add-client/add-client";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     VehicleProvider,
     AddMinibusServiceProvider,
-    ClienteProvider
+    ClienteProvider,
+    LoginProvider
   ]
 })
 export class AppModule {}
