@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {VehiclesPage} from "../vehicles/vehicles";
-import {MinibusPage} from "../minibus/minibus";
+import {MinibusPage} from "../services/services";
 import {ClientesPage} from "../clientes/clientes";
 
 @Component({
@@ -19,7 +19,7 @@ export class HomePage {
   }
 
   goToMinibusPage(){
-    this.navCtrl.push(MinibusPage, {'vehicle':'minibus'});
+    this.navCtrl.push(MinibusPage, {'vehicle':'services'});
   }
 
   goToVTCPage() {

@@ -11,10 +11,10 @@ import {AddVehiclePage} from "../pages/add-vehicle/add-vehicle";
 import { VehicleProvider } from '../providers/vehicle/vehicle';
 import {HttpClientModule} from "@angular/common/http";
 import {EditVehiclePage} from "../pages/edit-vehicle/edit-vehicle";
-import {MinibusPage} from "../pages/minibus/minibus";
-import {AddMinibusServicePage} from "../pages/add-minibus-service/add-minibus-service";
-import { AddMinibusServiceProvider } from '../providers/add-minibus-service/add-minibus-service-provider';
-import {MinibusDetailPage} from "../pages/minibus-detail/minibus-detail";
+import {MinibusPage} from "../pages/services/services";
+import {AddMinibusServicePage} from "../pages/add-service/add-service";
+import { AddServiceProvider } from '../providers/add-service/add-service-provider';
+import {MinibusDetailPage} from "../pages/services-detail/services-detail";
 import { ClienteProvider } from '../providers/cliente/cliente';
 import {ClienteDetailPage} from "../pages/cliente-detail/cliente-detail";
 import {ClientesPage} from "../pages/clientes/clientes";
@@ -59,7 +59,7 @@ import {AddClientPage} from "../pages/add-client/add-client";
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     VehicleProvider,
-    AddMinibusServiceProvider,
+    AddServiceProvider,
     ClienteProvider
   ]
 })

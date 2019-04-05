@@ -5,14 +5,14 @@ import {ServerConfig} from "../serverConfig";
 
 
 @Injectable()
-export class AddMinibusServiceProvider {
+export class AddServiceProvider {
 
   private serverConf = new ServerConfig();
   private url:string = this.serverConf.getServerUrl().concat("gguaguasbackend/services");
   private readonly httpOptions;
 
   constructor(public http: HttpClient) {
-    console.log('Hello AddMinibusServiceProvider Provider');
+    console.log('Hello AddServiceProvider Provider');
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded'

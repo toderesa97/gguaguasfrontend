@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
-import {AddMinibusServiceProvider} from "../../providers/add-minibus-service/add-minibus-service-provider";
+import {AddServiceProvider} from "../../providers/add-service/add-service-provider";
 
 /**
  * Generated class for the MinibusDetailPage page.
@@ -12,7 +12,7 @@ import {AddMinibusServiceProvider} from "../../providers/add-minibus-service/add
 @IonicPage()
 @Component({
   selector: 'page-minibus-detail',
-  templateUrl: 'minibus-detail.html',
+  templateUrl: 'services-detail.html',
 })
 export class MinibusDetailPage {
 
@@ -21,7 +21,7 @@ export class MinibusDetailPage {
   vehicle: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public addMinibusServiceProvider: AddMinibusServiceProvider,
+              public addMinibusServiceProvider: AddServiceProvider,
               public viewController: ViewController) {
     this.vehicle = this.navParams.get('vehicle');
     this.id = navParams.get('id');

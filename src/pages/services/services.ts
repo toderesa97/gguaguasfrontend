@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {IonicPage, ModalController, NavController, NavParams} from 'ionic-angular';
-import {AddMinibusServicePage} from "../add-minibus-service/add-minibus-service";
-import {AddMinibusServiceProvider} from "../../providers/add-minibus-service/add-minibus-service-provider";
-import {MinibusDetailPage} from "../minibus-detail/minibus-detail";
+import {AddMinibusServicePage} from "../add-service/add-service";
+import {AddServiceProvider} from "../../providers/add-service/add-service-provider";
+import {MinibusDetailPage} from "../services-detail/services-detail";
 
 /**
  * Generated class for the MinibusPage page.
@@ -14,7 +14,7 @@ import {MinibusDetailPage} from "../minibus-detail/minibus-detail";
 @IonicPage()
 @Component({
   selector: 'page-minibus',
-  templateUrl: 'minibus.html',
+  templateUrl: 'services.html',
 })
 export class MinibusPage {
 
@@ -23,7 +23,7 @@ export class MinibusPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public modalCtrl:ModalController,
-              public addMinibusServiceProvider: AddMinibusServiceProvider) {
+              public addMinibusServiceProvider: AddServiceProvider) {
   }
 
   ionViewDidLoad() {
