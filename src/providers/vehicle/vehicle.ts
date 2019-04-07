@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {ServerConfig} from "../serverConfig";
+import { Storage } from "@ionic/storage";
 
 @Injectable()
 export class VehicleProvider {
@@ -9,7 +10,8 @@ export class VehicleProvider {
 
   private url:string = this.serverConf.getServerUrl().concat("gguaguas/");
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,
+              public storage : Storage) {
     console.log('Hello VehicleProvider Provider');
   }
 

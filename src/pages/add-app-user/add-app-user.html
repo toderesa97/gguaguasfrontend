@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Gguaguas - add new app user
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="closeModal()">
+        <span ion-text color="primary">Cancel</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Username</ion-label>
+      <ion-input [(ngModel)]="newAppUsername" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input [(ngModel)]="userPassword" type="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tipo de cuenta</ion-label>
+      <ion-select [(ngModel)]="accountType">
+        <ion-option value="root">root</ion-option>
+        <ion-option value="manager" [selected]="true">manager</ion-option>
+        <ion-option value="driver">conductor</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <button (click)="insertAppUser()" ion-button>Insertar</button>
+  <span>{{ response?.message }}</span>
+</ion-content>

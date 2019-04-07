@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {ModalController, NavController} from 'ionic-angular';
 import {VehiclesPage} from "../vehicles/vehicles";
 import {MinibusPage} from "../minibus/minibus";
 import {ClientesPage} from "../clientes/clientes";
 import {Storage} from "@ionic/storage";
 import {LoginProvider} from "../../providers/login/login";
 import {LoginPage} from "../login/login";
+import {AddAppUserPage} from "../add-app-user/add-app-user";
 
 
 @Component({
@@ -15,12 +16,15 @@ import {LoginPage} from "../login/login";
 export class HomePage {
 
   username:string;
+  private userRole: string;
 
   constructor(public navCtrl: NavController,
               public storage:Storage,
+              public modalCtrl : ModalController,
               public loginProvider : LoginProvider) {
     storage.get("session").then((data) => {
       this.username = data.username;
+      this.userRole = data.role;
     })
   }
 
@@ -50,5 +54,14 @@ export class HomePage {
         (res) => this.navCtrl.setRoot(LoginPage)
       )
     )
+  }
+
+  isRootUser() {
+    return this.userRole == "root";
+  }
+
+  goToAddAppUserPage() {
+    const addAppUserPageModal = this.modalCtrl.create(AddAppUserPage);
+    addAppUserPageModal .present();
   }
 }

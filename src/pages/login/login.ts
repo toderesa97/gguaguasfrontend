@@ -30,7 +30,9 @@ export class LoginPage {
       (res) => {
         console.log(res);
         if (res.message === "Verified.") {
-          this.storage.set("session", {"token" : res.token, "username" : this.username}).then(()=>{
+          this.storage.set("session", {"token" : res.token,
+            "username" : this.username,
+            "role" : res.role}).then(()=>{
             this.navCtrl.setRoot(HomePage);
           });
         } else {

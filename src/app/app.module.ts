@@ -22,6 +22,8 @@ import {AddClientPage} from "../pages/add-client/add-client";
 import { LoginProvider } from '../providers/login/login';
 import {LoginPage} from "../pages/login/login";
 import {IonicStorageModule} from "@ionic/storage";
+import {AddAppUserPage} from "../pages/add-app-user/add-app-user";
+import { AddAppUserProvider } from '../providers/add-app-user/add-app-user';
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import {IonicStorageModule} from "@ionic/storage";
     ClienteDetailPage,
     ClientesPage,
     AddClientPage,
-    LoginPage
+    LoginPage,
+    AddAppUserPage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,8 @@ import {IonicStorageModule} from "@ionic/storage";
     ClientesPage,
     ClienteDetailPage,
     AddClientPage,
-    LoginPage
+    LoginPage,
+    AddAppUserPage
   ],
   providers: [
     StatusBar,
@@ -67,7 +71,8 @@ import {IonicStorageModule} from "@ionic/storage";
     VehicleProvider,
     AddMinibusServiceProvider,
     ClienteProvider,
-    LoginProvider
+    LoginProvider,
+    AddAppUserProvider
   ]
 })
 export class AppModule {}
