@@ -1,6 +1,6 @@
 export class ServerConfig {
 
-  private url:string = "http://192.168.1.46/";
+  private url:string = "http://localhost/";
 
   public constructor() {}
 
