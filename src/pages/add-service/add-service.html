@@ -52,14 +52,14 @@
     </ion-item>
     <ion-item>
       <ion-label>Fecha del transfer</ion-label>
-      <ion-datetime displayFormat="YYYY-M-D" pickerFormat="YYYY-M-D"
+      <ion-datetime displayFormat="YYYY-M-D" pickerFormat="YYYY-M-D" max="2130-12-12"
                     [(ngModel)]="transferDate" placeholder="Seleccione una fecha"
       ></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-label>Time del transfer</ion-label>
-      <ion-datetime displayFormat="YYYY-M-D" pickerFormat="YYYY-M-D"
-                    [(ngModel)]="transferTime" placeholder="Seleccione una fecha"
+      <ion-label>Hora del transfer</ion-label>
+      <ion-datetime displayFormat="hh:mm A" pickerFormat="hh:mm A"
+                    [(ngModel)]="transferTime" placeholder="Seleccione una hora"
       ></ion-datetime>
     </ion-item>
     <ion-item>
