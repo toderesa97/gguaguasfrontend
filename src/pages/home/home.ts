@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import {VehiclesPage} from "../vehicles/vehicles";
 import {MinibusPage} from "../minibus/minibus";
 import {ClientesPage} from "../clientes/clientes";
+import {PartsPage} from "../parts/parts";
 
 @Component({
   selector: 'page-home',
@@ -32,5 +33,9 @@ export class HomePage {
 
   goClientesPage() {
     this.navCtrl.push(ClientesPage);
+  }
+
+  goToPartsPage() {
+    this.navCtrl.push(PartsPage);
   }
 }

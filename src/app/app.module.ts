@@ -19,6 +19,9 @@ import { ClienteProvider } from '../providers/cliente/cliente';
 import {ClienteDetailPage} from "../pages/cliente-detail/cliente-detail";
 import {ClientesPage} from "../pages/clientes/clientes";
 import {AddClientPage} from "../pages/add-client/add-client";
+import {AddTransfersPartsPage} from "../pages/add-transfers-parts/add-transfers-parts";
+import { AddTransfersPartsProvider } from '../providers/add-transfers-parts/add-transfers-parts';
+import {PartsPage} from "../pages/parts/parts";
 
 
 @NgModule({
@@ -33,7 +36,9 @@ import {AddClientPage} from "../pages/add-client/add-client";
     MinibusDetailPage,
     ClienteDetailPage,
     ClientesPage,
-    AddClientPage
+    AddClientPage,
+    AddTransfersPartsPage,
+    PartsPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,9 @@ import {AddClientPage} from "../pages/add-client/add-client";
     MinibusDetailPage,
     ClientesPage,
     ClienteDetailPage,
-    AddClientPage
+    AddClientPage,
+    AddTransfersPartsPage,
+    PartsPage
   ],
   providers: [
     StatusBar,
@@ -60,7 +67,8 @@ import {AddClientPage} from "../pages/add-client/add-client";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     VehicleProvider,
     AddMinibusServiceProvider,
-    ClienteProvider
+    ClienteProvider,
+    AddTransfersPartsProvider
   ]
 })
 export class AppModule {}

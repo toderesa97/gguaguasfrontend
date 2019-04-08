@@ -7,7 +7,7 @@ export class VehicleProvider {
 
   private serverConf = new ServerConfig();
 
-  private url:string = this.serverConf.getServerUrl().concat("gguaguas/");
+  private url:string = this.serverConf.getServerUrl().concat("gguaguasbackend/");
 
   constructor(public http: HttpClient) {
     console.log('Hello VehicleProvider Provider');

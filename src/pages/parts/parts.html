@@ -1,0 +1,43 @@
+<head>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<ion-header>
+  <ion-navbar>
+    <ion-title>Gguaguas - Transfers</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Seleccionar fecha</ion-label>
+    <ion-datetime displayFormat="YYYY-M-D" pickerFormat="YYYY-M-D"
+                  [(ngModel)]="transferDate" placeholder="Seleccione una fecha"
+    ></ion-datetime>
+  </ion-item>
+  <ion-label><button (click)="selectTransferByDate()" ion-button>Buscar</button></ion-label>
+
+  <h3>Listado de transfers</h3>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Fecha</th>
+      <th scope="col">Origen</th>
+      <th scope="col">Destino</th>
+      <th scope="col">Titular de viaje</th>
+      <th scope="col">Número de pasajeros</th>
+      <th scope="col">Descripción</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let transfer of transfers">
+      <td>Fecha {{transfer?.transferDate}}</td>
+      <td>Salida: {{transfer?.origin}}</td>
+      <td>Llegada: {{transfer?.destiny}}</td>
+      <td>Titular del viaje: {{transfer?.name}}</td>
+      <td>PAX: {{transfer?.seats}}</td>
+      <td>Descripción: {{transfer?.description}}</td>
+    </tr>
+    </tbody>
+  </table>
+</ion-content>

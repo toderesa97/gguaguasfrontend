@@ -3,6 +3,7 @@ import {IonicPage, ModalController, NavController, NavParams} from 'ionic-angula
 import {AddMinibusServicePage} from "../add-minibus-service/add-minibus-service";
 import {AddMinibusServiceProvider} from "../../providers/add-minibus-service/add-minibus-service-provider";
 import {MinibusDetailPage} from "../minibus-detail/minibus-detail";
+import {AddTransfersPartsPage} from "../add-transfers-parts/add-transfers-parts";
 
 /**
  * Generated class for the MinibusPage page.
