@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {VehiclesPage} from "../vehicles/vehicles";
-import {ServicesPage} from "../services/services";
 import {ClientesPage} from "../clientes/clientes";
 import {ServicesButtonsPage} from "../services-buttons/services-buttons";
 
