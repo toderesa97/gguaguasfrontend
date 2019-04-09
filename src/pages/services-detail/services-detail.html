@@ -35,10 +35,14 @@
       <ion-label>Fecha del transfer: <p>{{details?.transferDate}}</p></ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>Hora del transfer: <p>{{ details?.transferTime | date: 'hh:mm A'}}</p></ion-label>
+      <ion-label>Hora del transfer:
+        <ion-item no-lines="" no-border="" no-margin="" no-padding="">
+          <ion-datetime displayFormat="hh:mm A" [(ngModel)]="time"></ion-datetime>
+        </ion-item>
+      </ion-label>
     </ion-item>
     <ion-item>
       <ion-label>Descripción: <p>{{details?.description}}</p></ion-label>
-</ion-item>
-</ion-list>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -19,6 +19,7 @@ export class ServicesDetailPage {
   private id: number;
   public details: any;
   vehicle: string;
+  time: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public addServiceProvider: AddServiceProvider,
@@ -36,6 +37,7 @@ export class ServicesDetailPage {
     this.addServiceProvider.getById(this.id, this.vehicle).subscribe(
       (res) => {
         this.details = res[0];
+        this.time = this.details.transferTime;
         console.log(res);
       },
       (error)=> console.log(error)
