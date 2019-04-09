@@ -19,6 +19,7 @@ import { ClienteProvider } from '../providers/cliente/cliente';
 import {ClienteDetailPage} from "../pages/cliente-detail/cliente-detail";
 import {ClientesPage} from "../pages/clientes/clientes";
 import {AddClientPage} from "../pages/add-client/add-client";
+import {ServicesButtonsPage} from "../pages/services-buttons/services-buttons";
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {AddClientPage} from "../pages/add-client/add-client";
     ServicesDetailPage,
     ClienteDetailPage,
     ClientesPage,
-    AddClientPage
+    AddClientPage,
+    ServicesButtonsPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import {AddClientPage} from "../pages/add-client/add-client";
     ServicesDetailPage,
     ClientesPage,
     ClienteDetailPage,
-    AddClientPage
+    AddClientPage,
+    ServicesButtonsPage
   ],
   providers: [
     StatusBar,

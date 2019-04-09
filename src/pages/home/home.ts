@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import {VehiclesPage} from "../vehicles/vehicles";
 import {ServicesPage} from "../services/services";
 import {ClientesPage} from "../clientes/clientes";
+import {ServicesButtonsPage} from "../services-buttons/services-buttons";
 
 @Component({
   selector: 'page-home',
@@ -18,19 +19,11 @@ export class HomePage {
     this.navCtrl.push(VehiclesPage);
   }
 
-  goToMinibusPage(){
-    this.navCtrl.push(ServicesPage, {'vehicle':'minibus'});
-  }
-
-  goToVTCPage() {
-    this.navCtrl.push(ServicesPage, {'vehicle':'vtc'});
-  }
-
-  goToMercedesPage() {
-    this.navCtrl.push(ServicesPage, {'vehicle':'mercedes'});
-  }
-
   goClientesPage() {
     this.navCtrl.push(ClientesPage);
+  }
+
+  goToServicesButtonsPage() {
+    this.navCtrl.push(ServicesButtonsPage);
   }
 }

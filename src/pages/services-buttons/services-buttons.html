@@ -1,33 +1,31 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Welcome to Gguaguas
-    </ion-title>
+    <ion-title>Servicios</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <div class="card-background-page">
-    <ion-card (click)="goToVehiclesPage()">
-      <img src="https://tymlinhart.com/img/red-card-background-2.svg"/>
-      <div class="card-title"><ion-icon name="md-clipboard"></ion-icon></div>
-      <div class="card-subtitle">Registrar vehículos</div>
-    </ion-card>
-  </div>
-
-  <div class="card-background-page">
-    <ion-card (click)="goToServicesButtonsPage()">
+    <ion-card (click)="goToMinibusPage()">
       <img src="https://tymlinhart.com/img/red-card-background-2.svg"/>
       <div class="card-title"><ion-icon name="md-bus"></ion-icon></div>
-      <div class="card-subtitle">Servicios</div>
+      <div class="card-subtitle">Minibús</div>
     </ion-card>
   </div>
 
   <div class="card-background-page">
-    <ion-card (click)="goClientesPage()">
+    <ion-card (click)="goToVTCPage()">
       <img src="https://tymlinhart.com/img/red-card-background-2.svg"/>
-      <div class="card-title"><ion-icon name="people"></ion-icon></div>
-      <div class="card-subtitle">Registrar Clientes</div>
+      <div class="card-title"><ion-icon name="md-bus"></ion-icon></div>
+      <div class="card-subtitle">VTC</div>
+    </ion-card>
+  </div>
+
+  <div class="card-background-page">
+    <ion-card (click)="goToMercedesPage()">
+      <img src="https://tymlinhart.com/img/red-card-background-2.svg"/>
+      <div class="card-title"><ion-icon name="md-bus"></ion-icon></div>
+      <div class="card-subtitle">Mercedes G</div>
     </ion-card>
   </div>
 </ion-content>
