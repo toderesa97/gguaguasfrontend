@@ -47,4 +47,16 @@ export class ServicesDetailPage {
   closeModal() {
     this.viewController.dismiss();
   }
+
+  modifyService() {
+    this.addServiceProvider.modifyById(this.id, this.details.name, this.details.destiny, this.details.origin,
+      this.details.seats, this.details.company, this.details.directionCompany,
+      this.details.transferDate, this.details.transferTime, this.details.description,
+      this.details.vehicle).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.closeModal();
+      }, error => console.log(error)
+    );
+  }
 }

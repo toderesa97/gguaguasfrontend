@@ -57,4 +57,21 @@ export class AddServiceProvider {
     return this.http.post<any>(this.url.concat("/remove.php"), param, this.httpOptions);
   }
 
+
+  modifyById(id, name: any, destiny: string, origin: any, seats: string, company: string,
+             directionCompany: string, transferDate: string, transferTime: string, description: any,
+             vehicle: string | string | any) {
+    let param = new HttpParams().append('id', id)
+      .append('name', name)
+      .append('destiny', destiny)
+      .append('origin', origin)
+      .append('seats', seats)
+      .append('company', company)
+      .append('directionCompany', directionCompany)
+      .append('transferDate', transferDate)
+      .append('transferTime', transferTime)
+      .append('description', description)
+      .append('vehicle', vehicle);
+    return this.http.post<any>(this.url.concat("/modify.php"), param, this.httpOptions);
+  }
 }

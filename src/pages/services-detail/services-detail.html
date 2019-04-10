@@ -12,37 +12,61 @@
 </ion-header>
 
 <ion-content style="margin-top: 20px">
+
   <ion-list>
     <ion-item>
-      <ion-label>Nombre: <p>{{details?.name}}</p></ion-label>
+      <ion-label>Nombre</ion-label>
+      <ion-input maxlength="500" [(ngModel)]="details.name" type="text"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Origen: <p>{{details?.origin}}</p></ion-label>
+      <ion-label>Destino</ion-label>
+      <ion-input maxlength="500" [(ngModel)]="details.destiny" type="text"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Destino: <p>{{details?.destiny}}</p></ion-label>
+      <ion-label>Origen</ion-label>
+      <ion-input maxlength="500" [(ngModel)]="details.origin" type="text"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Asientos: <p>{{details?.seats}}</p></ion-label>
+      <ion-label>Asientos</ion-label>
+      <ion-select *ngIf="vehicle == 'minibus'" [(ngModel)]="details.seats">
+        <ion-option value="6"> 6 asientos</ion-option>
+        <ion-option value="10"> 10 asientos</ion-option>
+      </ion-select>
+      <ion-select *ngIf="vehicle == 'mercedes'" [(ngModel)]="details.seats">
+        <ion-option value="4"> 4 asientos</ion-option>
+        <ion-option value="5"> 5 asientos</ion-option>
+        <ion-option value="6"> 6 asientos</ion-option>
+      </ion-select>
+      <ion-select *ngIf="vehicle == 'vtc'" [(ngModel)]="details.seats">
+        <ion-option value="4"> 4 asientos</ion-option>
+        <ion-option value="5"> 5 asientos</ion-option>
+      </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label>Compañía: <p>{{details?.company}}</p></ion-label>
+      <ion-label>Compañía</ion-label>
+      <ion-input maxlength="500" [(ngModel)]="details.company" type="text"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Dirección compañía: <p>{{details?.directionCompany}}</p></ion-label>
+      <ion-label>Dirección de la compañía</ion-label>
+      <ion-input maxlength="500" [(ngModel)]="details.directionCompany" type="text"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Fecha del transfer: <p>{{details?.transferDate}}</p></ion-label>
+      <ion-label>Fecha del transfer</ion-label>
+      <ion-datetime displayFormat="YYYY-M-D" pickerFormat="YYYY-M-D" max="2130-12-12"
+                    [(ngModel)]="details.transferDate" placeholder="Seleccione una fecha"
+      ></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-label>Hora del transfer:
-        <ion-item no-lines="" no-border="" no-margin="" no-padding="">
-          <ion-datetime disabled displayFormat="hh:mm A" [(ngModel)]="time"></ion-datetime>
-        </ion-item>
-      </ion-label>
+      <ion-label>Hora del transfer</ion-label>
+      <ion-datetime displayFormat="hh:mm A" pickerFormat="hh:mm A"
+                    [(ngModel)]="details.transferTime" placeholder="Seleccione una hora"
+      ></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-label>Descripción: <p>{{details?.description}}</p></ion-label>
+      <ion-label>Descripción</ion-label>
+      <ion-input maxlength="1000" [(ngModel)]="details.description" type="text"></ion-input>
     </ion-item>
   </ion-list>
+  <button (click)="modifyService()" ion-button>Añadir</button>
+
 </ion-content>
