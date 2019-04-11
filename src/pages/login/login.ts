@@ -21,6 +21,7 @@ export class LoginPage {
               public storage:Storage) {
   }
 
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
@@ -28,7 +29,6 @@ export class LoginPage {
   login() {
     this.loginProvider.login(this.username, this.password).subscribe(
       (res) => {
-        console.log(res);
         if (res.message === "Verified.") {
           this.storage.set("session", {"token" : res.token,
             "username" : this.username,
@@ -40,7 +40,7 @@ export class LoginPage {
         }
       },
       (err) => this.showAlertIncorrectCredentials()
-    )
+    );
   }
 
   showAlertIncorrectCredentials() {
@@ -51,4 +51,5 @@ export class LoginPage {
     });
     alert.present();
   }
+
 }

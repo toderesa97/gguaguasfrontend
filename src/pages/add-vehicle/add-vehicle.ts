@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, ViewController, Events} from 'ionic-angular';
 import {VehicleProvider} from "../../providers/vehicle/vehicle";
+import {observable} from "rxjs/symbol/observable";
 
 @IonicPage()
 @Component({
@@ -38,16 +39,20 @@ export class AddVehiclePage {
 
   insertVehicle() {
     console.log(this.licensePlate, this.vechicleBrand, this.vechicleSeats);
-    this.vehicleProvider.add(this.licensePlate, this.vechicleBrand, this.vechicleSeats).subscribe(
-      (res : any) => {
-        this.response = res;
-        console.log(res);
-        if (res.message == "OK.") {
-          this.closeModal();
-          this.events.publish('insertedVehicleResponse');
-        }
-      },
-      err => console.log(err)
+    this.vehicleProvider.add(this.licensePlate, this.vechicleBrand, this.vechicleSeats).then(
+      observable => observable.subscribe(
+        (res) => {
+          this.response = res;
+          if (res.message == "OK.") {
+            this.closeModal();
+            this.events.publish("insertedVehicleResponse");
+          }
+        },
+        (err) => console.log(err)
+      )
+    ).catch(
+      (err) => console.log(err)
     );
+
   }
 }

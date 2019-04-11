@@ -2,13 +2,6 @@ import { Component } from '@angular/core';
 import {Events, IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import {VehicleProvider} from "../../providers/vehicle/vehicle";
 
-/**
- * Generated class for the EditVehiclePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-edit-vehicle',
@@ -17,8 +10,8 @@ import {VehicleProvider} from "../../providers/vehicle/vehicle";
 export class EditVehiclePage {
 
   licensePlate : string;
-  vechicleSeats: string;
-  vechicleBrand: string;
+  vehicleSeats: string;
+  vehicleBrand: string;
 
   response : any;
 
@@ -34,23 +27,41 @@ export class EditVehiclePage {
   }
 
   fillForm() {
-    this.vehicleProvider.get(this.licensePlate).subscribe(
-      (res : any) => {
-        console.log(res);
-        this.vechicleBrand = res.brand;
-        this.vechicleSeats = res.seats;
-      },
-      err => console.log(err)
-    );
+    this.vehicleProvider.get(this.licensePlate).then(
+      observable => observable.subscribe(
+        (res : any) => {
+          console.log(res);
+          this.vehicleBrand = res.brand;
+          this.vehicleSeats = res.seats;
+        },
+        err => console.log(err)
+      ),
+      error => console.error(error)
+    ).catch(
+      (err) => console.error(err)
+    )
+
+
   }
 
   ionViewDidLoad() {
-
     console.log('ionViewDidLoad EditVehiclePage');
   }
 
   editVehicle() {
-
+    this.vehicleProvider.updateVehicle(this.licensePlate, this.vehicleSeats, this.vehicleBrand).then(
+      observable => observable.subscribe(
+        (res) => {
+          if (res.message === "OK.") {
+            this.events.publish("vehicleUpdated", {licensePlate : this.licensePlate,
+              seats : this.vehicleSeats, brand : this.vehicleBrand});
+            this.closeModal();
+          } else {
+            this.response = res;
+          }
+        }
+      )
+    )
   }
 
   closeModal() {
