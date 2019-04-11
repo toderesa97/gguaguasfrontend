@@ -62,7 +62,13 @@ export class ServicesDetailPage {
   }
 
   modifyService(formValues: any) {
-    console.log("MODIFICACIÓN");
+    console.log(formValues);
+    // En el caso de que no se realicen cambios en estos campos se envían vacíos. Por ello
+    // se deben inicializar:
+    if (formValues.seats==="") formValues.seats = this.details.seats;
+    if (formValues.transferTime==="") formValues.transferTime = this.details.transferTime;
+    if (formValues.transferDate==="") formValues.transferDate = this.details.transferDate;
+
     this.addServiceProvider.modifyById(this.id, formValues.name, formValues.destiny,
       formValues.origin, formValues.seats, formValues.company, formValues.directionCompany,
       formValues.transferDate, formValues.transferTime, formValues.description, this.vehicle).subscribe(
