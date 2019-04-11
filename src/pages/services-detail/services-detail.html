@@ -11,62 +11,67 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content style="margin-top: 20px">
-
+<ion-content padding>
+  <form (ngSubmit)="modifyService(formValues.value)" [formGroup]="formValues" >
   <ion-list>
     <ion-item>
       <ion-label>Nombre</ion-label>
-      <ion-input maxlength="500" [(ngModel)]="details.name" type="text"></ion-input>
+      <ion-input maxlength="500" value="{{details?.name}}" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Destino</ion-label>
-      <ion-input maxlength="500" [(ngModel)]="details.destiny" type="text"></ion-input>
+      <ion-input maxlength="500" value="{{details?.destiny}}" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Origen</ion-label>
-      <ion-input maxlength="500" [(ngModel)]="details.origin" type="text"></ion-input>
+      <ion-input maxlength="500" value="{{details?.origin}}" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Asientos</ion-label>
-      <ion-select *ngIf="vehicle == 'minibus'" [(ngModel)]="details.seats">
-        <ion-option value="6"> 6 asientos</ion-option>
-        <ion-option value="10"> 10 asientos</ion-option>
+      <ion-select *ngIf="vehicle == 'minibus'" [ngModel]="details?.seats"
+                  (ngModelChange)="details.seats=$event" [ngModelOptions]="{standalone: true}">
+        <ion-option value="6" [selected]="details?.seats == '6'"> 6 asientos</ion-option>
+        <ion-option value="10" [selected]="details?.seats == '10'"> 10 asientos</ion-option>
       </ion-select>
-      <ion-select *ngIf="vehicle == 'mercedes'" [(ngModel)]="details.seats">
-        <ion-option value="4"> 4 asientos</ion-option>
-        <ion-option value="5"> 5 asientos</ion-option>
-        <ion-option value="6"> 6 asientos</ion-option>
+      <ion-select *ngIf="vehicle == 'mercedes'" [ngModel]="details?.seats"
+                  (ngModelChange)="details.seats=$event" [ngModelOptions]="{standalone: true}">
+        <ion-option value="4" [selected]="details?.seats == '4'"> 4 asientos</ion-option>
+        <ion-option value="5" [selected]="details?.seats == '5'"> 5 asientos</ion-option>
+        <ion-option value="6" [selected]="details?.seats == '6'"> 6 asientos</ion-option>
       </ion-select>
-      <ion-select *ngIf="vehicle == 'vtc'" [(ngModel)]="details.seats">
-        <ion-option value="4"> 4 asientos</ion-option>
-        <ion-option value="5"> 5 asientos</ion-option>
+      <ion-select *ngIf="vehicle == 'vtc'" [ngModel]="details?.seats"
+                  (ngModelChange)="details.seats=$event" [ngModelOptions]="{standalone: true}">
+        <ion-option value="4" [selected]="details?.seats == '4'"> 4 asientos</ion-option>
+        <ion-option value="5" [selected]="details?.seats == '5'"> 5 asientos</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Compañía</ion-label>
-      <ion-input maxlength="500" [(ngModel)]="details.company" type="text"></ion-input>
+      <ion-input maxlength="500" value="{{details?.company}}" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Dirección de la compañía</ion-label>
-      <ion-input maxlength="500" [(ngModel)]="details.directionCompany" type="text"></ion-input>
+      <ion-input maxlength="500" value="{{details?.directionCompany}}" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Fecha del transfer</ion-label>
       <ion-datetime displayFormat="YYYY-M-D" pickerFormat="YYYY-M-D" max="2130-12-12"
-                    [(ngModel)]="details.transferDate" placeholder="Seleccione una fecha"
+                    [ngModel]="details?.transferDate" (ngModelChange)="details.transferDate=$event"
+                    [ngModelOptions]="{standalone: true}" placeholder="Seleccione una fecha"
       ></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>Hora del transfer</ion-label>
       <ion-datetime displayFormat="hh:mm A" pickerFormat="hh:mm A"
-                    [(ngModel)]="details.transferTime" placeholder="Seleccione una hora"
+                    [ngModel]="details?.transferTime" (ngModelChange)="details.transferTime=$event"
+                    [ngModelOptions]="{standalone: true}" placeholder="Seleccione una hora"
       ></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>Descripción</ion-label>
-      <ion-input maxlength="1000" [(ngModel)]="details.description" type="text"></ion-input>
+      <ion-input maxlength="1000" value="{{details?.description}}" type="text"></ion-input>
     </ion-item>
   </ion-list>
-  <button (click)="modifyService()" ion-button>Añadir</button>
-
+  <button ion-button full type="submit">Modificar</button>
+</form>
 </ion-content>

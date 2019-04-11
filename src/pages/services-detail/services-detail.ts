@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, NavParams, ViewController} from 'ionic-angular';
 import {AddServiceProvider} from "../../providers/add-service/add-service-provider";
-
-/**
- * Generated class for the ServicesDetailPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @IonicPage()
 @Component({
@@ -20,25 +14,44 @@ export class ServicesDetailPage {
   public details: any;
   vehicle: string;
   time: any;
+  private loading;
+  name: string;
+  private formValues: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public addServiceProvider: AddServiceProvider,
-              public viewController: ViewController) {
+              public viewController: ViewController,
+              public loadingController: LoadingController,
+              public formBuilder: FormBuilder) {
     this.vehicle = this.navParams.get('vehicle');
     this.id = navParams.get('id');
+    this.formValues = this.formBuilder.group({
+      name: [''],
+      destiny: [''],
+      origin: [''],
+      seats: [''],
+      company: [''],
+      directionCompany: [''],
+      transferDate: [''],
+      transferTime: [''],
+      description: ['']
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ServicesDetailPage');
+    this.createLoadingController();
     this.getDetails();
   }
 
-  getDetails(){
-    this.addServiceProvider.getById(this.id, this.vehicle).subscribe(
+  async getDetails(){
+    this.loading.present();
+    await this.addServiceProvider.getById(this.id, this.vehicle).subscribe(
       (res) => {
         this.details = res[0];
         this.time = this.details.transferTime;
         console.log(res);
+        this.loading.dismiss();
       },
       (error)=> console.log(error)
     );
@@ -48,15 +61,23 @@ export class ServicesDetailPage {
     this.viewController.dismiss();
   }
 
-  modifyService() {
-    this.addServiceProvider.modifyById(this.id, this.details.name, this.details.destiny, this.details.origin,
-      this.details.seats, this.details.company, this.details.directionCompany,
-      this.details.transferDate, this.details.transferTime, this.details.description,
-      this.details.vehicle).subscribe(
+  modifyService(formValues: any) {
+    console.log("MODIFICACIÓN");
+    this.addServiceProvider.modifyById(this.id, formValues.name, formValues.destiny,
+      formValues.origin, formValues.seats, formValues.company, formValues.directionCompany,
+      formValues.transferDate, formValues.transferTime, formValues.description, this.vehicle).subscribe(
       (res: any) => {
         console.log(res);
         this.closeModal();
       }, error => console.log(error)
     );
   }
+
+  private createLoadingController(){
+    this.loading = this.loadingController.create({
+      content:'Cargando...',
+      spinner:'dots'
+    })
+  }
+
 }
