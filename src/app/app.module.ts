@@ -19,10 +19,10 @@ import { ClienteProvider } from '../providers/cliente/cliente';
 import {ClienteDetailPage} from "../pages/cliente-detail/cliente-detail";
 import {ClientesPage} from "../pages/clientes/clientes";
 import {AddClientPage} from "../pages/add-client/add-client";
-import {AddTransfersPartsPage} from "../pages/add-transfers-parts/add-transfers-parts";
 import { AddTransfersPartsProvider } from '../providers/add-transfers-parts/add-transfers-parts';
 import {PartsPage} from "../pages/parts/parts";
-
+import { File } from '@ionic-native/file';
+import { FileOpener } from '@ionic-native/file-opener';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,6 @@ import {PartsPage} from "../pages/parts/parts";
     ClienteDetailPage,
     ClientesPage,
     AddClientPage,
-    AddTransfersPartsPage,
     PartsPage
   ],
   imports: [
@@ -58,7 +57,6 @@ import {PartsPage} from "../pages/parts/parts";
     ClientesPage,
     ClienteDetailPage,
     AddClientPage,
-    AddTransfersPartsPage,
     PartsPage
   ],
   providers: [

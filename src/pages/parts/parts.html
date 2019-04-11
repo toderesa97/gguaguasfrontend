@@ -16,6 +16,22 @@
   </ion-item>
   <ion-label><button (click)="selectTransferByDate()" ion-button>Buscar</button></ion-label>
 
+  <ion-item>
+    <ion-label stacked>From</ion-label>
+    <ion-input [(ngModel)]="letterObj.from"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>To</ion-label>
+    <ion-input [(ngModel)]="letterObj.to"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Text</ion-label>
+    <ion-textarea [(ngModel)]="letterObj.text" rows="10"></ion-textarea>
+  </ion-item>
+
+  <button ion-button full (click)="createPdf()">Crear PDF</button>
+  <button ion-button full (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Descargar PDF</button>
+
   <h3>Listado de transfers</h3>
 
   <table class="table">
