@@ -34,7 +34,7 @@ export class DriversPage {
     this.presentLoadingCustom();
     this.events.subscribe('insertedDriverResponse', handler => {
       console.log("Entrying...");
-      this.putDrivers();
+      this.getDrivers();
     });
   }
 
@@ -50,6 +50,7 @@ export class DriversPage {
       this.getDrivers();
     }));
   }
+
   getDrivers(){
     this.driverProvider.getAll().subscribe(
       (res : any) => {
@@ -58,6 +59,7 @@ export class DriversPage {
       },
       (error)=>console.log(error)
     );
+
   }
 
   /*detailsHotel(id){
@@ -102,7 +104,7 @@ export class DriversPage {
 
 
 
-  putDrivers() {
+  /*putDrivers() {
     this.driverProvider.getAll().subscribe(
       (res : any) => {
         this.drivers = res;
@@ -110,9 +112,7 @@ export class DriversPage {
       },
       err => console.log(err)
     );
-  }
-
-
+  }*/
 
   /*editVehicle(lisencePlate: any) {
     console.log("Edit vehicle with " , lisencePlate);
@@ -124,9 +124,9 @@ export class DriversPage {
 
   }*/
 
-  removeDriver(id: any) {
+  removeDriver(id) {
     this.driverProvider.remove(id).subscribe(
-      res => this.putDrivers(),
+      res => this.getDrivers(),
       err => console.log(err)
     );
   }

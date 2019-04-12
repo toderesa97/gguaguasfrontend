@@ -34,7 +34,7 @@ export class HotelsPage {
     this.presentLoadingCustom();
     this.events.subscribe('insertedHotelResponse', handler => {
       console.log("Entrying...");
-      this.putHotels();
+      this.getHotels();
     });
   }
 
@@ -50,14 +50,16 @@ export class HotelsPage {
       this.getHotels();
     }));
   }
+
   getHotels(){
     this.hotelProvider.getAll().subscribe(
       (res : any) => {
         this.hotels = res;
-        this.loading.dismiss();
       },
       (error)=>console.log(error)
     );
+    this.loading.dismiss();
+
   }
 
   /*detailsHotel(id){
@@ -102,7 +104,7 @@ export class HotelsPage {
 
 
 
-  putHotels() {
+  /*putHotels() {
     this.hotelProvider.getAll().subscribe(
       (res : any) => {
         this.hotels = res;
@@ -110,7 +112,7 @@ export class HotelsPage {
       },
       err => console.log(err)
     );
-  }
+  }*/
 
 
 
@@ -123,9 +125,9 @@ export class HotelsPage {
   }
 */
 
-  removeHotel(hotelCif: any) {
+  removeHotel(hotelCif) {
     this.hotelProvider.remove(hotelCif).subscribe(
-      res => this.putHotels(),
+      res => this.getHotels(),
       err => console.log(err)
     );
   }

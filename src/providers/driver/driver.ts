@@ -41,11 +41,8 @@ export class DriverProvider {
     return this.http.get(this.url.concat("getAll.php"));
   }
 
-  remove(id: string): Observable<any>{
-
-    let params = new HttpParams()
-      .append('id', id);
-
+  remove(id) {
+    let params = new HttpParams().append('id', id);
     return this.http.post<any>(this.url.concat("remove.php"), params,this.httpOptions);
   }
 
