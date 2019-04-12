@@ -24,16 +24,11 @@ export class AddHotelPage {
 
   clientName: string;
 
-  hotels = [];
+  clientsOfHotel = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public viewController: ViewController,
               public hotelProvider: HotelProvider) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddHotelPage');
-    this.getAllClients();
   }
 
   closeModal() {
@@ -51,15 +46,18 @@ export class AddHotelPage {
     this.closeModal();
   }
 
-
-
-
-  getAllClients() {
+  getClients() {
     this.hotelProvider.getAllClients().subscribe(
       (res: any) => {
-        this.hotels = Object.values(res);
+        console.log(res);
+        this.clientsOfHotel = res;
       },
       (error) => console.log(error)
     );
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad AddHotelPage');
+    this.getClients();
   }
 }
