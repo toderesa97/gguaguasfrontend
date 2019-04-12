@@ -19,6 +19,8 @@ import { ClienteProvider } from '../providers/cliente/cliente';
 import {ClienteDetailPage} from "../pages/cliente-detail/cliente-detail";
 import {ClientesPage} from "../pages/clientes/clientes";
 import {AddClientPage} from "../pages/add-client/add-client";
+import { AddTransfersPartsProvider } from '../providers/add-transfers-parts/add-transfers-parts';
+import {PartsPage} from "../pages/parts/parts";
 import {ServicesButtonsPage} from "../pages/services-buttons/services-buttons";
 
 import {DriversPage} from "../pages/drivers/drivers";
@@ -48,6 +50,7 @@ import { HotelProvider } from '../providers/hotel/hotel';
     AddDriverPage,
     HotelsPage,
     AddHotelPage
+    PartsPage
   ],
   imports: [
     BrowserModule,
@@ -72,6 +75,7 @@ import { HotelProvider } from '../providers/hotel/hotel';
     AddDriverPage,
     HotelsPage,
     AddHotelPage,
+    PartsPage
   ],
   providers: [
     StatusBar,
@@ -82,6 +86,7 @@ import { HotelProvider } from '../providers/hotel/hotel';
     ClienteProvider,
     DriverProvider,
     HotelProvider
+    AddTransfersPartsProvider
   ]
 })
 export class AppModule {}

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {VehiclesPage} from "../vehicles/vehicles";
 import {ClientesPage} from "../clientes/clientes";
+import {PartsPage} from "../parts/parts";
 import {DriversPage} from "../drivers/drivers";
 import {HotelsPage} from "../hotels/hotels";
 import {ServicesButtonsPage} from "../services-buttons/services-buttons";
@@ -37,5 +38,7 @@ export class HomePage {
     this.navCtrl.push(HotelsPage);
   }
 
-
+  goToPartsPage() {
+    this.navCtrl.push(PartsPage);
+  }
 }

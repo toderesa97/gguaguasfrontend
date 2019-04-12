@@ -7,7 +7,7 @@ export class VehicleProvider {
 
   private serverConf = new ServerConfig();
 
-  private url:string = this.serverConf.getServerUrl().concat("repositorioBitBucket/gguaguasbackend/");
+  private url:string = this.serverConf.getServerUrl().concat("gguaguasbackend/gguaguasbackend/");
 
   constructor(public http: HttpClient) {
     console.log('Hello VehicleProvider Provider');
