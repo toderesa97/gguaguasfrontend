@@ -19,6 +19,11 @@ import { ClienteProvider } from '../providers/cliente/cliente';
 import {ClienteDetailPage} from "../pages/cliente-detail/cliente-detail";
 import {ClientesPage} from "../pages/clientes/clientes";
 import {AddClientPage} from "../pages/add-client/add-client";
+import { LoginProvider } from '../providers/login/login';
+import {LoginPage} from "../pages/login/login";
+import {IonicStorageModule} from "@ionic/storage";
+import {AddAppUserPage} from "../pages/add-app-user/add-app-user";
+import { AddAppUserProvider } from '../providers/add-app-user/add-app-user';
 import { AddTransfersPartsProvider } from '../providers/add-transfers-parts/add-transfers-parts';
 import {PartsPage} from "../pages/parts/parts";
 import {ServicesButtonsPage} from "../pages/services-buttons/services-buttons";
@@ -51,11 +56,14 @@ import { HotelProvider } from '../providers/hotel/hotel';
     HotelsPage,
     AddHotelPage
     PartsPage
+    LoginPage,
+    AddAppUserPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -76,6 +84,8 @@ import { HotelProvider } from '../providers/hotel/hotel';
     HotelsPage,
     AddHotelPage,
     PartsPage
+    LoginPage,
+    AddAppUserPage
   ],
   providers: [
     StatusBar,
@@ -87,6 +97,8 @@ import { HotelProvider } from '../providers/hotel/hotel';
     DriverProvider,
     HotelProvider
     AddTransfersPartsProvider
+    LoginProvider,
+    AddAppUserProvider
   ]
 })
 export class AppModule {}

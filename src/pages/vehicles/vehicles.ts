@@ -9,12 +9,7 @@ import {
   AlertController
 } from 'ionic-angular';
 import {AddVehiclePage} from "../add-vehicle/add-vehicle";
-/**
- * Generated class for the VehiclesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import * as _ from 'lodash';
 
 @IonicPage()
 @Component({
@@ -33,14 +28,21 @@ export class VehiclesPage {
               public alertCtrl:AlertController) {
     this.presentLoadingCustom();
     this.events.subscribe('insertedVehicleResponse', handler => {
-      console.log("Entrying...");
       this.putVehicles();
     });
+    this.events.subscribe("vehicleUpdated", (vehicleObj) => {
+      this.vehicles.forEach(function(vehicle) {
+        if (vehicleObj.licensePlate === vehicle.licensePlate) {
+          vehicle.brand = vehicleObj.brand;
+          vehicle.seats = vehicleObj.seats;
+        }
+      })
+    })
   }
 
   presentLoadingCustom() {
     this.loading = this.loadingCtrl.create({
-      spinner: 'hide',
+      spinner: 'crescent',
       content: `Please wait...`,
     });
 
@@ -68,13 +70,16 @@ export class VehiclesPage {
   }
 
   putVehicles() {
-    this.vehicleProvider.getAllVehicles().subscribe(
-      (res : any) => {
-        this.vehicles = res;
+    this.vehicleProvider.getAllVehicles().then(
+      (observable) => {
         this.loading.dismiss();
-      },
-      err => console.log(err)
-    );
+        observable.subscribe(
+        (vehicles) => this.vehicles = vehicles,
+        (error) => console.error(error)
+      )}
+    ).catch(
+      (err) => console.error(err)
+    )
   }
 
   addNewVehicle() {
@@ -91,10 +96,24 @@ export class VehiclesPage {
   }
 
   removeVehicle(lisencePlate: any) {
-    this.vehicleProvider.delete(lisencePlate).subscribe(
-      res => this.putVehicles(),
-      err => console.log(err)
-    );
+    this.vehicleProvider.delete(lisencePlate).then(
+      (observable) => {
+        observable.subscribe(
+          (res) => {
+            console.log(this.vehicles);
+            this.vehicles = _.remove(this.vehicles, function (vehicle) {
+              return vehicle.licensePlate !== lisencePlate;
+            });
+            console.log(res)
+          },
+          (err) => {
+            console.error(err)
+          }
+        )
+      }
+    ).catch(
+      (err) => console.error(err)
+    )
   }
 }
 
