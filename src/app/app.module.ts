@@ -54,8 +54,8 @@ import { HotelProvider } from '../providers/hotel/hotel';
     DriversPage,
     AddDriverPage,
     HotelsPage,
-    AddHotelPage
-    PartsPage
+    AddHotelPage,
+    PartsPage,
     LoginPage,
     AddAppUserPage
   ],
@@ -83,7 +83,7 @@ import { HotelProvider } from '../providers/hotel/hotel';
     AddDriverPage,
     HotelsPage,
     AddHotelPage,
-    PartsPage
+    PartsPage,
     LoginPage,
     AddAppUserPage
   ],
@@ -95,8 +95,8 @@ import { HotelProvider } from '../providers/hotel/hotel';
     AddServiceProvider,
     ClienteProvider,
     DriverProvider,
-    HotelProvider
-    AddTransfersPartsProvider
+    HotelProvider,
+    AddTransfersPartsProvider,
     LoginProvider,
     AddAppUserProvider
   ]
