@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {VehiclesPage} from "../vehicles/vehicles";
 import {ClientesPage} from "../clientes/clientes";
+import {DriversPage} from "../drivers/drivers";
+import {HotelsPage} from "../hotels/hotels";
 import {ServicesButtonsPage} from "../services-buttons/services-buttons";
 
 @Component({
@@ -25,4 +27,15 @@ export class HomePage {
   goToServicesButtonsPage() {
     this.navCtrl.push(ServicesButtonsPage);
   }
+
+
+  goDriversPage() {
+    this.navCtrl.push(DriversPage);
+  }
+
+  goHotelsPage() {
+    this.navCtrl.push(HotelsPage);
+  }
+
+
 }

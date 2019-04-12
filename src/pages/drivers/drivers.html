@@ -1,0 +1,48 @@
+<head>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<ion-header>
+  <ion-navbar>
+    <ion-title>Gguaguas - conductores</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="card-background-page">
+    <ion-card (click)="addNewDriver()">
+      <img src="https://tymlinhart.com/img/red-card-background-2.svg"/>
+      <div class="card-title"><ion-icon name="add"></ion-icon></div>
+      <div class="card-subtitle">Añadir</div>
+    </ion-card>
+  </div>
+
+
+  <h3>Listado de conductores</h3>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellidos</th>
+      <th scope="col">Número de la Seguridad Social</th>
+      <th scope="col">Email</th>
+      <th scope="col">**Acciones**</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let driver of drivers">
+      <td>{{driver?.name}}</td>
+      <td>{{driver?.surname}}</td>
+      <td>{{driver?.socialSecurityNumber}}</td>
+      <td>{{driver?.email}}</td>
+      <td>
+        <div class="driversActionCell">
+          <ion-icon (click)="editDriver(driver?.id)" ios="ios-create" md="md-create"></ion-icon>
+          <ion-icon (click)="removeDriver(driver?.id)" ios="ios-trash" md="md-trash"></ion-icon>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</ion-content>
