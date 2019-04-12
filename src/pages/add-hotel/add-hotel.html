@@ -30,7 +30,9 @@
     </ion-item>
     <ion-item>
       <ion-label>Cliente (hotel)</ion-label>
-      <ion-input maxlength="500" [(ngModel)]="cif" type="text"></ion-input>
+      <ion-select [(ngModel)]="hotels">
+        <ion-option *ngFor="let hotel of hotels" value="{{hotel?.cif}}">{{hotel?.clientName}}</ion-option>
+      </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Email (hotel)</ion-label>

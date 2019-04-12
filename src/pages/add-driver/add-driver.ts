@@ -30,6 +30,10 @@ export class AddDriverPage {
     console.log('ionViewDidLoad AddDriverPage');
   }
 
+  closeModal() {
+    this.viewController.dismiss();
+  }
+
   addNewDriver() {
     console.log(this.name, this.surname, this.socialSecurityNumber, this.email);
 
@@ -41,7 +45,4 @@ export class AddDriverPage {
     this.closeModal();
   }
 
-  closeModal() {
-    this.viewController.dismiss();
-  }
 }

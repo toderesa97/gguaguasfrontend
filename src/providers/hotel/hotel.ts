@@ -42,12 +42,12 @@ export class HotelProvider {
     return this.http.get(this.url.concat("getAll.php"));
   }
 
+  getAllClients(){
+    return this.http.get(this.url.concat("getAllClients.php"));
+  }
 
-  remove(hotelCif: string): Observable<any>{
-
-    let params = new HttpParams()
-      .append('hotelCif', hotelCif);
-
+  remove(hotelCif) {
+    let params = new HttpParams().append('hotelCif', hotelCif);
     return this.http.post<any>(this.url.concat("remove.php"), params,this.httpOptions);
   }
 
