@@ -1,0 +1,46 @@
+<head>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<ion-header>
+  <ion-navbar>
+    <ion-title>Gguaguas - hoteles</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="card-background-page">
+    <ion-card (click)="addNewHotel()">
+      <img src="https://tymlinhart.com/img/red-card-background-2.svg"/>
+      <div class="card-title"><ion-icon name="add"></ion-icon></div>
+      <div class="card-subtitle">Añadir</div>
+    </ion-card>
+  </div>
+
+
+  <h3>Listado de hoteles</h3>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Hotel</th>
+      <th scope="col">Email</th>
+      <th scope="col">Nickname</th>
+      <th scope="col">**Acciones**</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let hotel of hotels">
+      <td>{{hotel?.hotelName}}</td>
+      <td>{{hotel?.hotelEmail}}</td>
+      <td>{{hotel?.nickname}}</td>
+      <td>
+        <div class="hotelsActionCell">
+          <ion-icon (click)="editHotel(hotel?.hotelCif)" ios="ios-create" md="md-create"></ion-icon>
+          <ion-icon (click)="removeHotel(hotel?.hotelCif)" ios="ios-trash" md="md-trash"></ion-icon>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</ion-content>

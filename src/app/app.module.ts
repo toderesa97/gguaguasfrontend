@@ -21,6 +21,14 @@ import {ClientesPage} from "../pages/clientes/clientes";
 import {AddClientPage} from "../pages/add-client/add-client";
 import {ServicesButtonsPage} from "../pages/services-buttons/services-buttons";
 
+import {DriversPage} from "../pages/drivers/drivers";
+import {AddDriverPage} from "../pages/add-driver/add-driver";
+import { DriverProvider } from '../providers/driver/driver';
+
+import {HotelsPage} from "../pages/hotels/hotels";
+import {AddHotelPage} from "../pages/add-hotel/add-hotel";
+import { HotelProvider } from '../providers/hotel/hotel';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +43,11 @@ import {ServicesButtonsPage} from "../pages/services-buttons/services-buttons";
     ClienteDetailPage,
     ClientesPage,
     AddClientPage,
-    ServicesButtonsPage
+    ServicesButtonsPage,
+    DriversPage,
+    AddDriverPage,
+    HotelsPage,
+    AddHotelPage
   ],
   imports: [
     BrowserModule,
@@ -55,7 +67,11 @@ import {ServicesButtonsPage} from "../pages/services-buttons/services-buttons";
     ClientesPage,
     ClienteDetailPage,
     AddClientPage,
-    ServicesButtonsPage
+    ServicesButtonsPage,
+    DriversPage,
+    AddDriverPage,
+    HotelsPage,
+    AddHotelPage,
   ],
   providers: [
     StatusBar,
@@ -63,7 +79,9 @@ import {ServicesButtonsPage} from "../pages/services-buttons/services-buttons";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     VehicleProvider,
     AddServiceProvider,
-    ClienteProvider
+    ClienteProvider,
+    DriverProvider,
+    HotelProvider
   ]
 })
 export class AppModule {}

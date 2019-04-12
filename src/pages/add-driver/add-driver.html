@@ -1,0 +1,42 @@
+<!--
+  Generated template for the AddMinibusServicePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Conductor: {{name}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="closeModal()">
+        <span ion-text color="primary">Cancel</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input maxlength="500" [(ngModel)]="name" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Apellidos</ion-label>
+      <ion-input maxlength="500" [(ngModel)]="surname" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Número de la Seguridad Social</ion-label>
+      <ion-input maxlength="500" [(ngModel)]="socialSecurityNumber" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input maxlength="500" [(ngModel)]="email" type="text"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button (click)="addNewDriver()" ion-button>Añadir</button>
+
+</ion-content>

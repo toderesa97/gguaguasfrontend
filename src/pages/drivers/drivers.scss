@@ -1,0 +1,14 @@
+page-drivers {
+  .driversActionCell {
+    font-size: 1.5em;
+
+    ion-icon {
+      padding: 3px;
+    }
+
+    ion-icon:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  }
+}
