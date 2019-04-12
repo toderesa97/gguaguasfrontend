@@ -62,22 +62,6 @@ export class DriversPage {
 
   }
 
-  /*detailsHotel(id){
-    console.log("CLICKED hotel with id ", id);
-    const modal = this.modalCtrl.create(HotelDetailPage, {"id": id});
-    modal.present();
-  }*/
-
-
-
-
-
-
-
-
-
-
-
   presentLoadingCustom() {
     this.loading = this.loadingCtrl.create({
       spinner: 'hide',
@@ -101,18 +85,6 @@ export class DriversPage {
     });
     alert.present();
   }
-
-
-
-  /*putDrivers() {
-    this.driverProvider.getAll().subscribe(
-      (res : any) => {
-        this.drivers = res;
-        this.loading.dismiss();
-      },
-      err => console.log(err)
-    );
-  }*/
 
   /*editVehicle(lisencePlate: any) {
     console.log("Edit vehicle with " , lisencePlate);

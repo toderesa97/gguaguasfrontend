@@ -30,8 +30,8 @@
     </ion-item>
     <ion-item>
       <ion-label>Cliente (hotel)</ion-label>
-      <ion-select [(ngModel)]="hotels">
-        <ion-option *ngFor="let hotel of hotels" value="{{hotel?.cif}}">{{hotel?.clientName}}</ion-option>
+      <ion-select [(ngModel)]="cif">
+        <ion-option *ngFor="let a of clientsOfHotel" value="{{a?.cif}}">{{a?.clientName}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>

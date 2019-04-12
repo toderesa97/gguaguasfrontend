@@ -62,22 +62,6 @@ export class HotelsPage {
 
   }
 
-  /*detailsHotel(id){
-    console.log("CLICKED hotel with id ", id);
-    const modal = this.modalCtrl.create(HotelDetailPage, {"id": id});
-    modal.present();
-  }*/
-
-
-
-
-
-
-
-
-
-
-
   presentLoadingCustom() {
     this.loading = this.loadingCtrl.create({
       spinner: 'hide',
@@ -101,20 +85,6 @@ export class HotelsPage {
     });
     alert.present();
   }
-
-
-
-  /*putHotels() {
-    this.hotelProvider.getAll().subscribe(
-      (res : any) => {
-        this.hotels = res;
-        this.loading.dismiss();
-      },
-      err => console.log(err)
-    );
-  }*/
-
-
 
   /*editVehicle(lisencePlate: any) {
     console.log("Edit vehicle with " , lisencePlate);
