@@ -8,7 +8,7 @@ export class DriverProvider {
   private readonly httpOptions;
   private serverConf = new ServerConfig();
 
-  private url:string = this.serverConf.getServerUrl().concat("repositorioBitBucket/gguaguasbackend/driver/");
+  private url:string = this.serverConf.getServerUrl().concat("gguaguasbackend/driver/");
 
 
   constructor(public http: HttpClient) {

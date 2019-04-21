@@ -8,7 +8,7 @@ import {ServerConfig} from "../serverConfig";
 export class AddServiceProvider {
 
   private serverConf = new ServerConfig();
-  private url:string = this.serverConf.getServerUrl().concat("gguaguasbackend/gguaguasbackend/services");
+  private url:string = this.serverConf.getServerUrl().concat("gguaguasbackend/services");
   private readonly httpOptions;
 
   constructor(public http: HttpClient) {

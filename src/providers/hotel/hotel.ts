@@ -8,7 +8,7 @@ export class HotelProvider {
   private readonly httpOptions;
   private serverConf = new ServerConfig();
 
-  private url:string = this.serverConf.getServerUrl().concat("repositorioBitBucket/gguaguasbackend/hotel/");
+  private url:string = this.serverConf.getServerUrl().concat("gguaguasbackend/hotel/");
 
 
   constructor(public http: HttpClient) {
