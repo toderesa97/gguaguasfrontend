@@ -7,7 +7,7 @@ import { Storage } from "@ionic/storage";
 export class VehicleProvider {
 
   private serverConf = new ServerConfig();
-  private url:string = this.serverConf.getServerUrl().concat("gguaguas/vehicle/");
+  private url:string = this.serverConf.getRootDir().concat("vehicle/");
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'

@@ -7,7 +7,7 @@ import {Storage} from "@ionic/storage";
 export class LoginProvider {
 
   private serverConf = new ServerConfig();
-  private url:string = this.serverConf.getServerUrl().concat("gguaguasbackend/auth/");
+  private url:string = this.serverConf.getRootDir().concat("auth/");
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'

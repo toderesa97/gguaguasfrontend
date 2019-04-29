@@ -1,12 +1,17 @@
 export class ServerConfig {
 
-  private url:string = "http://localhost/";
+  private server:string = "http://localhost/";
+  private rootDir:string = "gguaguas/";
 
   public constructor() {}
 
 
   public getServerUrl() : string {
-    return this.url;
+    return this.server;
+  }
+
+  public getRootDir() : string {
+    return this.server.concat(this.rootDir);
   }
 
 }

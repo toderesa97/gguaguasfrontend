@@ -15,7 +15,7 @@ export class AddAppUserProvider {
   private readonly httpOptions;
   private serverConf = new ServerConfig();
 
-  private url:string = this.serverConf.getServerUrl().concat("gguaguas/management/");
+  private url:string = this.serverConf.getRootDir().concat("management/");
 
   constructor(public http: HttpClient,
               public storage : Storage) {

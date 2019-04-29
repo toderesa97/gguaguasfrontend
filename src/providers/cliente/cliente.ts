@@ -8,7 +8,7 @@ export class ClienteProvider {
   private readonly httpOptions;
   private serverConf = new ServerConfig();
 
-  private url:string = this.serverConf.getServerUrl().concat("gguaguasbackend/client/");
+  private url:string = this.serverConf.getRootDir().concat("client/");
 
 
   constructor(public http: HttpClient) {
