@@ -11,6 +11,8 @@ export class PartsPage {
 
   transferDate: string;
   transfers = [];
+  tomorrow: Date = new Date();
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public addTransfersPartsProvider: AddTransfersPartsProvider) {
@@ -18,6 +20,12 @@ export class PartsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PartsPage');
+  }
+
+  ngOnInit() {
+    this.tomorrow.setDate(this.tomorrow.getDate() + 1);
+    this.transferDate = this.tomorrow.toISOString();
+    this.selectTransferByDate();
   }
 
   selectTransferByDate() {

@@ -17,5 +17,4 @@ export class AddTransfersPartsProvider {
       let param = new HttpParams().append('transferDate', transferDate);
       return this.http.post<any>(this.url.concat("/getByDate.php"), param, this.httpOptions);
   }
-
 }
