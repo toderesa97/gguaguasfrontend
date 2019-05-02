@@ -3,7 +3,7 @@
 </head>
 <ion-header>
   <ion-navbar>
-    <ion-title>Gguaguas - Transfers</ion-title>
+    <ion-title>Gguaguas - Servicios</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -37,6 +37,23 @@
       <td>{{transfer?.name}}</td>
       <td>{{transfer?.seats}}</td>
       <td>{{transfer?.description}}</td>
+      <td><ion-item>
+        <ion-label>Conductores</ion-label>
+        <ion-select>
+          <ion-option *ngFor="let driver of drivers" [value]="driver?.name" (ionSelect)="selectDriver(driver?.name)">{{driver?.name}}</ion-option>
+        </ion-select>
+
+        </ion-item>
+        <ion-label>
+          <button (click)="createTransfer(transfer?.transferDate,
+                                                            transfer?.transferTime,
+                                                            transfer?.origin,
+                                                            transfer?.destiny,
+                                                            transfer?.name,
+                                                            transfer?.seats,
+                                                            transfer?.description)" ion-button>Crear transfer</button>
+        </ion-label>
+      </td>
     </tr>
     </tbody>
   </table>
