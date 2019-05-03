@@ -24,17 +24,23 @@ import {LoginPage} from "../pages/login/login";
 import {IonicStorageModule} from "@ionic/storage";
 import {AddAppUserPage} from "../pages/add-app-user/add-app-user";
 import { AddAppUserProvider } from '../providers/add-app-user/add-app-user';
-import { AddTransfersPartsProvider } from '../providers/add-transfers-parts/add-transfers-parts';
+
+import {AddTransfersPartsProvider } from '../providers/add-transfers-parts/add-transfers-parts';
+import {AddTransfersFiltersProvider } from '../providers/add-transfers-filters/add-transfers-filters';
+import {DataProvider } from '../providers/add-transfers-filters/data';
+import {AddFilterPage} from "../pages/add-filter/add-filter";
+
 import {PartsPage} from "../pages/parts/parts";
+import {TransfersPage} from "../pages/transfers/transfers";
 import {ServicesButtonsPage} from "../pages/services-buttons/services-buttons";
 
 import {DriversPage} from "../pages/drivers/drivers";
 import {AddDriverPage} from "../pages/add-driver/add-driver";
-import { DriverProvider } from '../providers/driver/driver';
+import {DriverProvider } from '../providers/driver/driver';
 
 import {HotelsPage} from "../pages/hotels/hotels";
 import {AddHotelPage} from "../pages/add-hotel/add-hotel";
-import { HotelProvider } from '../providers/hotel/hotel';
+import {HotelProvider } from '../providers/hotel/hotel';
 
 
 @NgModule({
@@ -56,6 +62,8 @@ import { HotelProvider } from '../providers/hotel/hotel';
     HotelsPage,
     AddHotelPage,
     PartsPage,
+    TransfersPage,
+    AddFilterPage,
     LoginPage,
     AddAppUserPage
   ],
@@ -84,6 +92,8 @@ import { HotelProvider } from '../providers/hotel/hotel';
     HotelsPage,
     AddHotelPage,
     PartsPage,
+    TransfersPage,
+    AddFilterPage,
     LoginPage,
     AddAppUserPage
   ],
@@ -97,6 +107,8 @@ import { HotelProvider } from '../providers/hotel/hotel';
     DriverProvider,
     HotelProvider,
     AddTransfersPartsProvider,
+    AddTransfersFiltersProvider,
+    DataProvider,
     LoginProvider,
     AddAppUserProvider
   ]

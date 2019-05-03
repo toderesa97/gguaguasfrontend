@@ -3,6 +3,7 @@ import {ModalController, NavController} from 'ionic-angular';
 import {VehiclesPage} from "../vehicles/vehicles";
 import {ClientesPage} from "../clientes/clientes";
 import {PartsPage} from "../parts/parts";
+import {TransfersPage} from "../transfers/transfers";
 import {DriversPage} from "../drivers/drivers";
 import {HotelsPage} from "../hotels/hotels";
 import {ServicesButtonsPage} from "../services-buttons/services-buttons";
@@ -54,6 +55,10 @@ export class HomePage {
 
   goToPartsPage() {
     this.navCtrl.push(PartsPage);
+  }
+
+  goToTransfersPage() {
+    this.navCtrl.push(TransfersPage);
   }
 
   logout() {
