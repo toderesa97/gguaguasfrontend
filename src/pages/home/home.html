@@ -3,7 +3,12 @@
     <ion-title>
       Welcome to Gguaguas
     </ion-title>
+
     <ion-buttons end style="display: flex; align-items: center">
+      <button ion-button icon-only (click)="goToSettingsPage()">
+        <ion-icon name="md-settings"></ion-icon>
+      </button>
+      <p></p>
       <button *ngIf="isRootUser()" ion-button icon-only (click)="goToAddAppUserPage()">
         <ion-icon name="md-person-add"></ion-icon>
       </button>

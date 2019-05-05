@@ -35,6 +35,7 @@ import { DriverProvider } from '../providers/driver/driver';
 import {HotelsPage} from "../pages/hotels/hotels";
 import {AddHotelPage} from "../pages/add-hotel/add-hotel";
 import { HotelProvider } from '../providers/hotel/hotel';
+import {SettingsPage} from "../pages/settings/settings";
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { HotelProvider } from '../providers/hotel/hotel';
     AddHotelPage,
     PartsPage,
     LoginPage,
-    AddAppUserPage
+    AddAppUserPage,
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -85,7 +87,8 @@ import { HotelProvider } from '../providers/hotel/hotel';
     AddHotelPage,
     PartsPage,
     LoginPage,
-    AddAppUserPage
+    AddAppUserPage,
+    SettingsPage
   ],
   providers: [
     StatusBar,

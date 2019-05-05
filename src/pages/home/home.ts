@@ -10,6 +10,7 @@ import {Storage} from "@ionic/storage";
 import {LoginProvider} from "../../providers/login/login";
 import {LoginPage} from "../login/login";
 import {AddAppUserPage} from "../add-app-user/add-app-user";
+import {SettingsPage} from "../settings/settings";
 
 
 @Component({
@@ -71,5 +72,9 @@ export class HomePage {
   goToAddAppUserPage() {
     const addAppUserPageModal = this.modalCtrl.create(AddAppUserPage);
     addAppUserPageModal .present();
+  }
+
+  goToSettingsPage() {
+    this.navCtrl.push(SettingsPage);
   }
 }
