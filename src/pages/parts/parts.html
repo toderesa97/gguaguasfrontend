@@ -36,7 +36,7 @@
       <td>{{transfer?.destiny}}</td>
       <td>{{transfer?.name}}</td>
       <td>{{transfer?.seats}}</td>
-      <td>{{transfer?.description}}</td>
+      <td>{{transfer.description !== "undefined" ? transfer?.description : ""}}</td>
       <td><ion-item>
         <ion-label>Conductores</ion-label>
         <ion-select>

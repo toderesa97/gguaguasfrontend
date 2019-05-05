@@ -29,7 +29,7 @@
       <ion-input maxlength="500" [(ngModel)]="hotelCif" type="text"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Cliente (hotel)</ion-label>
+      <ion-label>Cliente (Razón Social)</ion-label>
       <ion-select [(ngModel)]="cif">
         <ion-option *ngFor="let a of clientsOfHotel" value="{{a?.cif}}">{{a?.clientName}}</ion-option>
       </ion-select>
