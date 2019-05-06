@@ -26,8 +26,6 @@ import {AddAppUserPage} from "../pages/add-app-user/add-app-user";
 import { AddAppUserProvider } from '../providers/add-app-user/add-app-user';
 
 import {AddTransfersPartsProvider } from '../providers/add-transfers-parts/add-transfers-parts';
-import {AddTransfersFiltersProvider } from '../providers/add-transfers-filters/add-transfers-filters';
-import {DataProvider } from '../providers/add-transfers-filters/data';
 import {AddFilterPage} from "../pages/add-filter/add-filter";
 
 import {PartsPage} from "../pages/parts/parts";
@@ -42,6 +40,7 @@ import {HotelsPage} from "../pages/hotels/hotels";
 import {AddHotelPage} from "../pages/add-hotel/add-hotel";
 import { HotelProvider } from '../providers/hotel/hotel';
 import {SettingsPage} from "../pages/settings/settings";
+import { TransferFilterProvider } from '../providers/transfer-filter/transfer-filter';
 
 @NgModule({
   declarations: [
@@ -109,10 +108,9 @@ import {SettingsPage} from "../pages/settings/settings";
     DriverProvider,
     HotelProvider,
     AddTransfersPartsProvider,
-    AddTransfersFiltersProvider,
-    DataProvider,
     LoginProvider,
-    AddAppUserProvider
+    AddAppUserProvider,
+    TransferFilterProvider
   ]
 })
 export class AppModule {}

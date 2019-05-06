@@ -8,14 +8,15 @@
 </ion-header>
 
 <ion-content padding>
-  <div class="card-background-page">
-    <ion-card (click)="addNewFilter()">
-      <img src="https://tymlinhart.com/img/red-card-background-2.svg"/>
-      <div class="card-title"><ion-icon name="add"></ion-icon></div>
-      <div class="card-subtitle">Añadir filtro</div>
-    </ion-card>
+  <p>Empiece a crear filtros</p>
+  <div class="filtering-area">
+
   </div>
-  <h3>Listado de transfers</h3>
+  <button ion-button (click)="goToAddNewFilterPage()">
+    <ion-icon style="font-size: 1.7em; margin-right: 2px;" name="md-add-circle"></ion-icon>
+    Nuevo filtro
+  </button>
+  <h3>Listado de transfers (<a href="#" (click)="retrieveAllTransfers()">Listar todos</a>)</h3>
 
   <table class="table">
     <thead>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AddTransfersPartsProvider} from "../../providers/add-transfers-parts/add-transfers-parts";
 import {DriverProvider} from "../../providers/driver/driver";
+import {TransferFilterProvider} from "../../providers/transfer-filter/transfer-filter";
 
 @IonicPage()
 @Component({
@@ -19,7 +20,8 @@ export class PartsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public addTransfersPartsProvider: AddTransfersPartsProvider,
-              public getDriverProvider: DriverProvider) {
+              public getDriverProvider: DriverProvider,
+              public transferFilterProvider: TransferFilterProvider) {
   }
 
   ionViewDidLoad() {
@@ -54,12 +56,8 @@ export class PartsPage {
   createTransfer(transferDate, transferTime, origin, destiny, name, seats, description) {
     console.log(transferDate, transferTime, origin, destiny, name, seats, description, this.selectedDriver);
 
-    this.addTransfersPartsProvider.createTransfer(transferDate, transferTime, origin,
-                                                  destiny, name, seats, description, this.selectedDriver).subscribe(
-                                                    (res: any) => {
-                                                      console.log(res);
-                                                    }, error => console.log(error)
-                                                  );
+    this.transferFilterProvider.createTransfer(transferDate, transferTime, origin,
+                                                  destiny, name, seats, description, this.selectedDriver);
   }
 
   selectDriver(selectedDriver: string) {
