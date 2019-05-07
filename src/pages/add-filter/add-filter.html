@@ -18,5 +18,46 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-item>
+    <ion-label>Tipo</ion-label>
+    <ion-select [(ngModel)]="filterType">
+      <ion-option value="driver">Conductor</ion-option>
+      <ion-option value="date">Fecha</ion-option>
+      <ion-option value="hotel">Hotel</ion-option>
+      <ion-option value="vehicle">Vehículo</ion-option>
+    </ion-select>
+  </ion-item>
 
+  <div *ngIf="filterType === 'date'">
+    <ion-item>
+      <ion-label>¿Es en rango o fija?</ion-label>
+      <ion-select [(ngModel)]="dateType">
+        <ion-option value="range">Rango</ion-option>
+        <ion-option value="fixed">Única</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <div *ngIf="dateType==='range'" style="display: flex;">
+      <ion-item>
+        <ion-label>Desde</ion-label>
+        <ion-datetime displayFormat="YYYY-M-D" pickerFormat="YYYY-M-D"
+                      [(ngModel)]="transferFromDate" placeholder="Seleccione una fecha"
+        ></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Hasta</ion-label>
+        <ion-datetime displayFormat="YYYY-M-D" pickerFormat="YYYY-M-D"
+                      [(ngModel)]="transferToDate" placeholder="Seleccione una fecha"
+        ></ion-datetime>
+      </ion-item>
+    </div>
+    <div *ngIf="dateType==='fixed'">
+      <ion-item>
+        <ion-label>Seleccionar fecha</ion-label>
+        <ion-datetime displayFormat="YYYY-M-D" pickerFormat="YYYY-M-D"
+                      [(ngModel)]="transferFixedDate" placeholder="Seleccione una fecha"
+        ></ion-datetime>
+      </ion-item>
+    </div>
+  </div>
 </ion-content>

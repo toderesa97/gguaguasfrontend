@@ -15,6 +15,10 @@ import 'rxjs/add/operator/debounceTime';
   templateUrl: 'add-filter.html',
 })
 export class AddFilterPage {
+  filterType: string;
+  dateType: string;
+  transferFromDate: string;
+  transferToDate: string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
