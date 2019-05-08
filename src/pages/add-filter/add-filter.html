@@ -18,7 +18,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
+<!--  <ion-item>
     <ion-label>Tipo</ion-label>
     <ion-select [(ngModel)]="filterType">
       <ion-option value="driver">Conductor</ion-option>
@@ -26,7 +26,13 @@
       <ion-option value="hotel">Hotel</ion-option>
       <ion-option value="vehicle">Vehículo</ion-option>
     </ion-select>
-  </ion-item>
+  </ion-item>-->
+  <ion-row text-center>
+    <button ion-button (click)="filterType='driver'">Conductor</button>
+    <button ion-button (click)="filterType='date'">Fecha</button>
+    <button ion-button (click)="filterType='hotel'">Hotel</button>
+    <button ion-button (click)="filterType='vehicle'">Vehículo</button>
+  </ion-row>
 
   <div *ngIf="filterType === 'driver'">
     <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
