@@ -25,11 +25,17 @@ export class AddFilterPage {
   driversName: string[] = [];
   private filteredDriversNames: string[];
 
+
+  hotels: string[];
+  hotelsNickname: string[] = [];
+  private filteredHotelsNicknames: string[];
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public viewController: ViewController,
               public transferFilterProvider: TransferFilterProvider) {
     this.initializeItems();
+    this.initializeNicknames();
   }
 
   closeModal() {
@@ -41,9 +47,10 @@ export class AddFilterPage {
 
   }
 
+  // DRIVERS
+
   getItems(ev) {
     var val = ev.target.value;
-
 
     if (val && val.trim() != '') {
       this.filteredDriversNames = this.driversName.filter((item) => {
@@ -59,6 +66,33 @@ export class AddFilterPage {
         let this_=this;
         this.drivers.forEach(function (driver: any) {
           this_.driversName.push(driver.name.concat(" ").concat(driver.surname));
+        })
+      },
+      (error) => console.log(error)
+    );
+  }
+
+
+
+  // NICKNAMES
+
+  getNicknamesHotels(ev) {
+    var val = ev.target.value;
+
+    if (val && val.trim() != '') {
+      this.filteredHotelsNicknames = this.hotelsNickname.filter((itemNickname) => {
+        return (itemNickname.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
+
+  initializeNicknames() {
+    this.transferFilterProvider.getAllHotels().subscribe(
+      (res: any) => {
+        this.hotels = res;
+        let this_=this;
+        this.hotels.forEach(function (hotel: any) {
+          this_.hotelsNickname.push(hotel.nickname);
         })
       },
       (error) => console.log(error)
