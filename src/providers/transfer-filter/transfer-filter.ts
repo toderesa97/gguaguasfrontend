@@ -56,4 +56,9 @@ export class TransferFilterProvider {
     });
 
   }
+
+  getAllDrivers(){
+    return this.http.get(this.url.concat("getAllDrivers.php"));
+  }
+
 }

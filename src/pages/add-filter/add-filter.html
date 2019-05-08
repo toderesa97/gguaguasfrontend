@@ -28,6 +28,15 @@
     </ion-select>
   </ion-item>
 
+  <div *ngIf="filterType === 'driver'">
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-list>
+      <ion-item *ngFor="let driver of filteredDriversNames">
+        {{ driver }}
+      </ion-item>
+    </ion-list>
+  </div>
+
   <div *ngIf="filterType === 'date'">
     <ion-item>
       <ion-label>¿Es en rango o fija?</ion-label>
