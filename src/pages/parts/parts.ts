@@ -36,8 +36,8 @@ export class PartsPage {
   }
 
   selectTransferByDate() {
-    console.log(this.transferDate);
-    this.addTransfersPartsProvider.getByDate(this.transferDate).subscribe(
+    console.log(this.transferDate.slice(0,10));
+    this.addTransfersPartsProvider.getByDate(this.transferDate.slice(0,10)).subscribe(
       (res: any) => {
         console.log(res);
         this.transfers = res;
