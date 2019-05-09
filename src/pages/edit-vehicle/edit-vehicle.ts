@@ -27,21 +27,14 @@ export class EditVehiclePage {
   }
 
   fillForm() {
-    this.vehicleProvider.get(this.licensePlate).then(
-      observable => observable.subscribe(
-        (res : any) => {
-          console.log(res);
-          this.vehicleBrand = res.brand;
-          this.vehicleSeats = res.seats;
-        },
-        err => console.log(err)
-      ),
-      error => console.error(error)
-    ).catch(
-      (err) => console.error(err)
+    this.vehicleProvider.get(this.licensePlate).subscribe(
+      (res : any) => {
+        console.log(res);
+        this.vehicleBrand = res.brand;
+        this.vehicleSeats = res.seats;
+      },
+      err => console.log(err)
     )
-
-
   }
 
   ionViewDidLoad() {
@@ -49,18 +42,16 @@ export class EditVehiclePage {
   }
 
   editVehicle() {
-    this.vehicleProvider.updateVehicle(this.licensePlate, this.vehicleSeats, this.vehicleBrand).then(
-      observable => observable.subscribe(
-        (res) => {
-          if (res.message === "OK.") {
-            this.events.publish("vehicleUpdated", {licensePlate : this.licensePlate,
-              seats : this.vehicleSeats, brand : this.vehicleBrand});
-            this.closeModal();
-          } else {
-            this.response = res;
-          }
+    this.vehicleProvider.updateVehicle(this.licensePlate, this.vehicleSeats, this.vehicleBrand).subscribe(
+      (res) => {
+        if (res.message === "OK.") {
+          this.events.publish("vehicleUpdated", {licensePlate : this.licensePlate,
+            seats : this.vehicleSeats, brand : this.vehicleBrand});
+          this.closeModal();
+        } else {
+          this.response = res;
         }
-      )
+      }
     )
   }
 

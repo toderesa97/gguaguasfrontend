@@ -39,20 +39,15 @@ export class AddVehiclePage {
 
   insertVehicle() {
     console.log(this.licensePlate, this.vechicleBrand, this.vechicleSeats);
-    this.vehicleProvider.add(this.licensePlate, this.vechicleBrand, this.vechicleSeats).then(
-      observable => observable.subscribe(
-        (res) => {
-          this.response = res;
-          if (res.message == "OK.") {
-            this.closeModal();
-            this.events.publish("insertedVehicleResponse");
-          }
-        },
-        (err) => console.log(err)
-      )
-    ).catch(
+    this.vehicleProvider.add(this.licensePlate, this.vechicleBrand, this.vechicleSeats).subscribe(
+      (res) => {
+        this.response = res;
+        if (res.message == "OK.") {
+          this.closeModal();
+          this.events.publish("insertedVehicleResponse");
+        }
+      },
       (err) => console.log(err)
-    );
-
+    )
   }
 }

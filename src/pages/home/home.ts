@@ -63,10 +63,8 @@ export class HomePage {
   }
 
   logout() {
-    this.loginProvider.logout().then((promise) =>
-      promise.subscribe(
-        (res) => this.navCtrl.setRoot(LoginPage)
-      )
+    this.loginProvider.logout().subscribe(
+      () => this.navCtrl.setRoot(LoginPage)
     )
   }
 
