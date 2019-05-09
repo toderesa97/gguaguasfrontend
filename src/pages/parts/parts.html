@@ -42,15 +42,26 @@
         <ion-select>
           <ion-option *ngFor="let driver of drivers" [value]="driver?.name" (ionSelect)="selectDriver(driver?.name)">{{driver?.name}}</ion-option>
         </ion-select>
+        <ion-select>
+          <ion-option *ngFor="let hotel of hotels" [value]="hotel?.hotelCif" (ionSelect)="selectHotel(hotel?.hotelCif)">{{hotel?.hotelName}}</ion-option>
+        </ion-select>
+        <ion-select>
+          <ion-option *ngFor="let vehicle of vehicles" [value]="vehicle?.licensePlate" (ionSelect)="selectVehicle(vehicle?.licensePlate)">{{vehicle?.licensePlate}}</ion-option>
+        </ion-select>
+        <ion-select>
+          <ion-option *ngFor="let client of clients" [value]="client?.cif" (ionSelect)="selectClient(client?.cif)">{{client?.clientName}}</ion-option>
+        </ion-select>
 
         </ion-item>
         <ion-label>
-          <button (click)="createTransfer(transfer?.transferDate,
+          <button (click)="addTransfer(transfer?.transferDate,
                                                             transfer?.transferTime,
                                                             transfer?.origin,
                                                             transfer?.destiny,
                                                             transfer?.name,
                                                             transfer?.seats,
+                                                            transfer?.company,
+                                                            transfer?.directionCompany,
                                                             transfer?.description)" ion-button>Crear transfer</button>
         </ion-label>
       </td>

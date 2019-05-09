@@ -1,7 +1,7 @@
 export class ServerConfig {
 
   private server:string = "http://localhost/";
-  private rootDir:string = "repositorioBitBucket/gguaguasbackend/";
+  private rootDir:string = "gguaguasbackend/gguaguasbackend/";
 
   public constructor() {}
 
