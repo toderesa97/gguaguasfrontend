@@ -85,4 +85,13 @@
     </ion-list>
   </div>
 
+  <div *ngIf="filterType === 'vehicle'">
+    <ion-searchbar (ionInput)="getBrandVehicles($event)"></ion-searchbar>
+    <ion-list>
+      <ion-item *ngFor="let brand of filteredVehiclesBrands">
+        {{ brand }}
+      </ion-item>
+    </ion-list>
+  </div>
+
 </ion-content>

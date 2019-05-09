@@ -37,6 +37,4 @@ export class LoginProvider {
     });
     return observable;
   }
-
-
 }

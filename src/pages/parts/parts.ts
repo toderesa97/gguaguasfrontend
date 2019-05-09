@@ -22,6 +22,7 @@ export class PartsPage {
               public addTransfersPartsProvider: AddTransfersPartsProvider,
               public getDriverProvider: DriverProvider,
               public transferFilterProvider: TransferFilterProvider) {
+
   }
 
   ionViewDidLoad() {
@@ -44,6 +45,7 @@ export class PartsPage {
       }, error => console.log(error)
     );
   }
+
   getDrivers(){
     this.getDriverProvider.getAll().subscribe(
       (res: any) => {

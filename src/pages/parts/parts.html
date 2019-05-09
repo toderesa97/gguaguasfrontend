@@ -15,7 +15,7 @@
     ></ion-datetime>
   </ion-item>
   <ion-label><button (click)="selectTransferByDate()" ion-button>Buscar</button></ion-label>
-  <h3>Listado de servicios ({{transferDate.slice(0,10)}})</h3>
+  <h3>Listado de servicios ({{transferDate?.slice(0,10)}})</h3>
 
   <table class="table">
     <thead>
@@ -36,7 +36,7 @@
       <td>{{transfer?.destiny}}</td>
       <td>{{transfer?.name}}</td>
       <td>{{transfer?.seats}}</td>
-      <td>{{transfer.description !== "undefined" ? transfer?.description : ""}}</td>
+      <td>{{transfer?.description !== "undefined" ? transfer?.description : ""}}</td>
       <td><ion-item>
         <ion-label>Conductores</ion-label>
         <ion-select>
@@ -46,12 +46,12 @@
         </ion-item>
         <ion-label>
           <button (click)="createTransfer(transfer?.transferDate,
-                                                            transfer?.transferTime,
-                                                            transfer?.origin,
-                                                            transfer?.destiny,
-                                                            transfer?.name,
-                                                            transfer?.seats,
-                                                            transfer?.description)" ion-button>Crear transfer</button>
+                                          transfer?.transferTime,
+                                          transfer?.origin,
+                                          transfer?.destiny,
+                                          transfer?.name,
+                                          transfer?.seats,
+                                          transfer?.description)" ion-button>Crear transfer</button>
         </ion-label>
       </td>
     </tr>

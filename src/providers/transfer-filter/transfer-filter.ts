@@ -65,4 +65,8 @@ export class TransferFilterProvider {
     return this.http.get(this.url.concat("getAllHotels.php"));
   }
 
+  getAllVehicles(){
+    return this.http.get(this.url.concat("getAllVehicles.php"));
+  }
+
 }

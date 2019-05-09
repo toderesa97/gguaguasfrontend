@@ -17,18 +17,7 @@ export class AddTransfersPartsProvider {
   }
 
   getByDate(transferDate){
-    let param;
-    this.getCredentials();
-    param = new HttpParams().append('transferDate', transferDate)
-                            .append('username', this.username)
-                            .append('token', this.token);
-    return this.http.post<any>(this.url.concat("/getByDate.php"), param, this.httpOptions);
-  }
-
-  private getCredentials() {
-    this.storage.get("session").then((data) => {
-      this.username = data.username;
-      this.token = data.token;
-    });
+    let param = new HttpParams().append('transferDate', transferDate);
+    return  this.http.post<any>(this.url.concat("/getByDate.php"), param, this.httpOptions);
   }
 }
