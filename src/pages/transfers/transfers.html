@@ -31,12 +31,12 @@
     </thead>
     <tbody>
     <tr *ngFor="let transfer of transfers">
-      <td>Fecha {{transfer?.transferDate}}</td>
-      <td>Salida: {{transfer?.origin}}</td>
-      <td>Llegada: {{transfer?.destiny}}</td>
-      <td>Titular del viaje: {{transfer?.name}}</td>
-      <td>PAX: {{transfer?.seats}}</td>
-      <td>Descripción: {{transfer?.description}}</td>
+      <td>{{transfer?.transferDate}}</td>
+      <td>{{transfer?.origin}}</td>
+      <td>{{transfer?.destiny}}</td>
+      <td>{{transfer?.name}}</td>
+      <td>{{transfer?.seats}}</td>
+      <td>{{transfer?.description}}</td>
     </tr>
     </tbody>
   </table>
