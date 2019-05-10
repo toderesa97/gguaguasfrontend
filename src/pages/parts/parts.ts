@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AddTransfersPartsProvider} from "../../providers/add-transfers-parts/add-transfers-parts";
 import {DriverProvider} from "../../providers/driver/driver";
-import {TransferFilterProvider} from "../../providers/transfer-filter/transfer-filter";
+import {HotelProvider} from "../../providers/hotel/hotel";
+import {VehicleProvider} from "../../providers/vehicle/vehicle";
+import {ClienteProvider} from "../../providers/cliente/cliente";
 
 @IonicPage()
 @Component({
@@ -16,13 +18,20 @@ export class PartsPage {
   tomorrow: Date = new Date();
   drivers = [];
   selectedDriver;
+  hotels = [];
+  hotel;
+  vehicles = [];
+  vehicle;
+  clients = [];
+  client;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public addTransfersPartsProvider: AddTransfersPartsProvider,
               public getDriverProvider: DriverProvider,
-              public transferFilterProvider: TransferFilterProvider) {
-
+              public hotelProvider: HotelProvider,
+              public vehicleProvider: VehicleProvider,
+              public clientProvider: ClienteProvider) {
   }
 
   ionViewDidLoad() {
@@ -34,6 +43,9 @@ export class PartsPage {
     this.transferDate = this.tomorrow.toISOString();
     this.selectTransferByDate();
     this.getDrivers();
+    this.getHotel();
+    this.getVehicle();
+    this.getClient();
   }
 
   selectTransferByDate() {
@@ -54,15 +66,57 @@ export class PartsPage {
       }, error => console.log(error)
     );
   }
+  getHotel(){
+    this.hotelProvider.getAll().subscribe(
+      (res: any) => {
+        console.log(res);
+        this.hotels = res;
+      }, error => console.log(error)
+    );
+  }
+  getVehicle(){
+    this.vehicleProvider.getAllVehicles().subscribe(
+          (vehicles) => this.vehicles = vehicles,
+          (error) => console.error(error)
+    )
+  }
 
-  createTransfer(transferDate, transferTime, origin, destiny, name, seats, description) {
-    console.log(transferDate, transferTime, origin, destiny, name, seats, description, this.selectedDriver);
+  getClient(){
+    this.clientProvider.getAll().subscribe(
+      (res: any) => {
+        console.log(res);
+        this.clients = res;
+      }, error => console.log(error)
+    );
+  }
 
-    this.transferFilterProvider.createTransfer(transferDate, transferTime, origin,
-                                                  destiny, name, seats, description, this.selectedDriver);
+  addTransfer(transferDate, transferTime, origin, destiny, name, seats, company, directionCompany, description) {
+    console.log(name, destiny, origin, seats,
+      company, directionCompany, transferDate,
+      transferTime, description, this.selectedDriver, this.hotel, this.vehicle, this.client);
+
+    this.addTransfersPartsProvider.addTransfer(name, destiny, origin, seats,
+      company, directionCompany, transferDate,
+      transferTime, description, this.selectedDriver, this.vehicle, this.hotel, this.client).subscribe(
+      (res: any) => {
+        console.log(res);
+      }, error => console.log(error)
+    );
   }
 
   selectDriver(selectedDriver: string) {
     this.selectedDriver = selectedDriver;
+  }
+
+  selectHotel(hotel: string) {
+    this.hotel = hotel;
+  }
+
+  selectVehicle(vehicle: string) {
+    this.vehicle = vehicle;
+  }
+
+  selectClient(client: string) {
+    this.client = client;
   }
 }
