@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import 'rxjs/add/operator/debounceTime';
 import {TransferFilterProvider} from "../../providers/transfer-filter/transfer-filter";
+import { IonicSelectableComponent } from 'ionic-selectable';
 
 @IonicPage()
 @Component({
@@ -9,7 +10,8 @@ import {TransferFilterProvider} from "../../providers/transfer-filter/transfer-f
   templateUrl: 'add-filter.html',
 })
 
-export class AddFilterPage {
+
+export class AddFilterPage implements OnInit {
   filterType: string;
   dateType: string;
   transferFromDate: string;
@@ -27,13 +29,16 @@ export class AddFilterPage {
   vehiclesBrands: string[] = [];
   private filteredVehiclesBrands: string[];
 
+
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public viewController: ViewController,
               public transferFilterProvider: TransferFilterProvider) {
-    this.initializeItems();
+    //this.initializeItems();
     this.initializeNicknames();
     this.initializeVehiclesBrand();
+
   }
 
   closeModal() {
@@ -116,7 +121,26 @@ export class AddFilterPage {
     }
   }
 
-  getInputValue(value) {
-    console.log(value);
+
+  ngOnInit() {
+
+    this.transferFilterProvider.getAllDrivers().subscribe(
+      (res: any) => {
+        this.drivers = res;
+        let this_=this;
+        this.drivers.forEach(function (driver: any) {
+          this_.driversName.push(driver.name.concat(" ").concat(driver.surname));
+        })
+      },
+      (error) => console.log(error)
+    );
   }
+
+  portChange(event: {
+    component: IonicSelectableComponent,
+    value: any
+  }) {
+    console.log('driver:', event.value);
+  }
+
 }

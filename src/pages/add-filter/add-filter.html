@@ -30,13 +30,12 @@
   </ion-row>
 
   <div *ngIf="filterType === 'driver'">
-    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-    <ion-list>
-      <ion-item (click)="getInputValue(driver)" *ngFor="let driver of filteredDriversNames">
-        {{ driver }}
-      </ion-item>
-    </ion-list>
-    <button ion-button (click)="getInputValue(filteredDriversNames[0])">Accept</button>
+    <ion-item>
+      <ion-label>Conductor:</ion-label>
+      <ionic-selectable item-content [(ngModel)]="driver" [items]="driversName" [canSearch]="true"
+                        (onChange)="portChange($event)">
+      </ionic-selectable>
+    </ion-item>
   </div>
 
   <div *ngIf="filterType === 'date'">
