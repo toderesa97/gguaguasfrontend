@@ -32,10 +32,11 @@
   <div *ngIf="filterType === 'driver'">
     <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
     <ion-list>
-      <ion-item *ngFor="let driver of filteredDriversNames">
+      <ion-item (click)="getInputValue(driver)" *ngFor="let driver of filteredDriversNames">
         {{ driver }}
       </ion-item>
     </ion-list>
+    <button ion-button (click)="getInputValue(filteredDriversNames[0])">Accept</button>
   </div>
 
   <div *ngIf="filterType === 'date'">
@@ -74,21 +75,20 @@
   <div *ngIf="filterType === 'hotel'">
     <ion-searchbar (ionInput)="getNicknamesHotels($event)"></ion-searchbar>
     <ion-list>
-      <ion-item *ngFor="let nickname of filteredHotelsNicknames">
+      <ion-item (click)="getInputValue(nickname)" *ngFor="let nickname of filteredHotelsNicknames" >
         {{ nickname }}
       </ion-item>
     </ion-list>
+    <button ion-button (click)="getInputValue(filteredHotelsNicknames[0])">Accept</button>
   </div>
 
   <div *ngIf="filterType === 'vehicle'">
     <ion-searchbar (ionInput)="getBrandVehicles($event)"></ion-searchbar>
     <ion-list>
-      <ion-item *ngFor="let brand of filteredVehiclesBrands">
+      <ion-item (click)="getInputValue(brand)" *ngFor="let brand of filteredVehiclesBrands">
         {{ brand }}
       </ion-item>
     </ion-list>
+    <button ion-button (click)="getInputValue(filteredVehiclesBrands[0])">Accept</button>
   </div>
-
-  <button ion-button (click)="submitFilter()">Accept</button>
-
 </ion-content>

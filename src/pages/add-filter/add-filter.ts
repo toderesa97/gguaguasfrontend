@@ -116,4 +116,7 @@ export class AddFilterPage {
     }
   }
 
+  getInputValue(value) {
+    console.log(value);
+  }
 }
