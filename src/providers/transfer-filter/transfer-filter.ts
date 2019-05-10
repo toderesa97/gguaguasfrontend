@@ -21,16 +21,10 @@ export class TransferFilterProvider {
     console.log('Hello TransferFilterProvider Provider');
   }
 
-  async getAll() {
-    let observable;
-    await this.storage.get("session").then((data) => {
-      let params = new HttpParams()
-        .append("username", data.username)
-        .append("token", Session.token);
-
-      observable = this.http.post<any>(this.url.concat("getAll.php"), params, this.httpOptions);
-    });
-    return observable;
+  getAll() {
+    let params = new HttpParams().append("username", Session.username)
+      .append("token", Session.token);
+    return this.http.post<any>(this.url.concat("getAll.php"), params, this.httpOptions);
   }
 
   async createTransfer(transferDate: string, transferTime: string, origin: string,
