@@ -3,6 +3,7 @@ import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angula
 import {LoginProvider} from "../../providers/login/login";
 import {HomePage} from "../home/home";
 import {Storage} from "@ionic/storage";
+import {Session} from "../../providers/Session";
 
 @IonicPage()
 @Component({
@@ -30,11 +31,11 @@ export class LoginPage {
     this.loginProvider.login(this.username, this.password).subscribe(
       (res) => {
         if (res.message === "Verified.") {
-          this.storage.set("session", {"token" : res.token,
-            "username" : this.username,
-            "role" : res.role}).then(()=>{
+            Session.setUsername(this.username)
+              .setToken(res.token)
+              .setRole(res.role);
             this.navCtrl.setRoot(HomePage);
-          });
+
         } else {
           this.showAlertIncorrectCredentials();
         }

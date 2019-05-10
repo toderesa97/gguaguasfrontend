@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {ServerConfig} from '../serverConfig';
 import { Storage } from "@ionic/storage";
 import {Observable} from "rxjs";
+import {Session} from "../Session";
 
 @Injectable()
 export class AddTransfersPartsProvider {
@@ -18,12 +19,10 @@ export class AddTransfersPartsProvider {
   }
 
   getByDate(transferDate){
-    let param;
-    this.getCredentials();
-    param = new HttpParams().append('transferDate', transferDate)
-                            .append('username', this.username)
-                            .append('token', this.token);
-    return this.http.post<any>(this.url.concat("/getByDate.php"), param, this.httpOptions);
+    let param = new HttpParams().append('transferDate', transferDate)
+      .append('username', Session.username)
+      .append('token', Session.token);
+    return  this.http.post<any>(this.url.concat("/getByDate.php"), param, this.httpOptions);
   }
 
   private getCredentials() {

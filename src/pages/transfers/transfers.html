@@ -25,18 +25,26 @@
       <th scope="col">Origen</th>
       <th scope="col">Destino</th>
       <th scope="col">Titular de viaje</th>
-      <th scope="col">Número de pasajeros</th>
+      <th scope="col">Pasajeros</th>
       <th scope="col">Descripción</th>
+      <th scope="col">Conductor</th>
+      <th scope="col">Vehículo</th>
+      <th scope="col">Hotel</th>
+      <th scope="col">Cliente</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let transfer of transfers">
-      <td>Fecha {{transfer?.transferDate}}</td>
-      <td>Salida: {{transfer?.origin}}</td>
-      <td>Llegada: {{transfer?.destiny}}</td>
-      <td>Titular del viaje: {{transfer?.name}}</td>
-      <td>PAX: {{transfer?.seats}}</td>
-      <td>Descripción: {{transfer?.description}}</td>
+      <td>{{transfer?.transferDate}}</td>
+      <td>{{transfer?.origin}}</td>
+      <td>{{transfer?.destiny}}</td>
+      <td>{{transfer?.name}}</td>
+      <td>{{transfer?.seats}}</td>
+      <td>{{transfer?.description}}</td>
+      <td><a (click)="goToDetails(transfer?.driver, 'driver')">{{transfer?.driver}}</a> </td>
+      <td><a (click)="goToDetails(transfer?.vehicle, 'vehicle')">{{transfer?.vehicle}}</a> </td>
+      <td><a (click)="goToDetails(transfer?.hotel, 'hotel')">{{transfer?.hotel}}</a> </td>
+      <td><a (click)="goToDetails(transfer?.client, 'client')">{{transfer?.client}}</a> </td>
     </tr>
     </tbody>
   </table>

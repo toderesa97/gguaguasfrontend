@@ -70,15 +70,12 @@ export class VehiclesPage {
   }
 
   putVehicles() {
-    this.vehicleProvider.getAllVehicles().then(
-      (observable) => {
+    this.vehicleProvider.getAllVehicles().subscribe(
+      (vehicles) => {
         this.loading.dismiss();
-        observable.subscribe(
-        (vehicles) => this.vehicles = vehicles,
-        (error) => console.error(error)
-      )}
-    ).catch(
-      (err) => console.error(err)
+        this.vehicles = vehicles
+      },
+      (error) => console.error(error),
     )
   }
 
@@ -96,23 +93,17 @@ export class VehiclesPage {
   }
 
   removeVehicle(lisencePlate: any) {
-    this.vehicleProvider.delete(lisencePlate).then(
-      (observable) => {
-        observable.subscribe(
-          (res) => {
-            console.log(this.vehicles);
-            this.vehicles = _.remove(this.vehicles, function (vehicle) {
-              return vehicle.licensePlate !== lisencePlate;
-            });
-            console.log(res)
-          },
-          (err) => {
-            console.error(err)
-          }
-        )
+    this.vehicleProvider.delete(lisencePlate).subscribe(
+      (res) => {
+        console.log(this.vehicles);
+        this.vehicles = _.remove(this.vehicles, function (vehicle) {
+          return vehicle.licensePlate !== lisencePlate;
+        });
+        console.log(res)
+      },
+      (err) => {
+        console.error(err)
       }
-    ).catch(
-      (err) => console.error(err)
     )
   }
 }

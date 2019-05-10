@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngFor="let item of dataKeys ; let i = index">
+    <ion-card>
+      <ion-card-header>
+        <b>{{item}}</b>
+      </ion-card-header>
+      <ion-card-content>
+        {{dataValues[i]}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

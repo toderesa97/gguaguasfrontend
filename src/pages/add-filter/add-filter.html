@@ -18,20 +18,15 @@
 </ion-header>
 
 <ion-content padding>
-<!--  <ion-item>
-    <ion-label>Tipo</ion-label>
-    <ion-select [(ngModel)]="filterType">
-      <ion-option value="driver">Conductor</ion-option>
-      <ion-option value="date">Fecha</ion-option>
-      <ion-option value="hotel">Hotel</ion-option>
-      <ion-option value="vehicle">Vehículo</ion-option>
-    </ion-select>
-  </ion-item>-->
   <ion-row text-center>
-    <button ion-button (click)="filterType='driver'">Conductor</button>
-    <button ion-button (click)="filterType='date'">Fecha</button>
-    <button ion-button (click)="filterType='hotel'">Hotel</button>
-    <button ion-button (click)="filterType='vehicle'">Vehículo</button>
+    <button ion-button [color]="filterType === 'driver' ? 'secondary' : 'primary' "
+            (click)="filterType='driver'">Conductor</button>
+    <button ion-button [color]="filterType === 'date' ? 'secondary' : 'primary' "
+            (click)="filterType='date'">Fecha</button>
+    <button ion-button [color]="filterType === 'hotel' ? 'secondary' : 'primary' "
+            (click)="filterType='hotel'">Hotel</button>
+    <button ion-button [color]="filterType === 'vehicle' ? 'secondary' : 'primary' "
+            (click)="filterType='vehicle'">Vehículo</button>
   </ion-row>
 
   <div *ngIf="filterType === 'driver'">
@@ -84,5 +79,16 @@
       </ion-item>
     </ion-list>
   </div>
+
+  <div *ngIf="filterType === 'vehicle'">
+    <ion-searchbar (ionInput)="getBrandVehicles($event)"></ion-searchbar>
+    <ion-list>
+      <ion-item *ngFor="let brand of filteredVehiclesBrands">
+        {{ brand }}
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <button ion-button (click)="submitFilter()">Accept</button>
 
 </ion-content>

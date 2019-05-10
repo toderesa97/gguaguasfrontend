@@ -51,4 +51,9 @@ export class HotelProvider {
     return this.http.post<any>(this.url.concat("remove.php"), params,this.httpOptions);
   }
 
+  getByHotelCif(hotelCif){
+    let param = new HttpParams().append('hotelCif', hotelCif);
+    return this.http.post<any>(this.url.concat("getByHotelCif.php"), param, this.httpOptions);
+  }
+
 }

@@ -2,33 +2,30 @@ import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import 'rxjs/add/operator/debounceTime';
 import {TransferFilterProvider} from "../../providers/transfer-filter/transfer-filter";
-/**
- * Generated class for the AddHotelPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
   selector: 'page-add-filter',
   templateUrl: 'add-filter.html',
 })
+
 export class AddFilterPage {
   filterType: string;
   dateType: string;
   transferFromDate: string;
   transferToDate: string;
 
-
   drivers: string[];
   driversName: string[] = [];
   private filteredDriversNames: string[];
 
-
   hotels: string[];
   hotelsNickname: string[] = [];
   private filteredHotelsNicknames: string[];
+
+  vehicles: string[];
+  vehiclesBrands: string[] = [];
+  private filteredVehiclesBrands: string[];
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -36,17 +33,16 @@ export class AddFilterPage {
               public transferFilterProvider: TransferFilterProvider) {
     this.initializeItems();
     this.initializeNicknames();
+    this.initializeVehiclesBrand();
   }
 
   closeModal() {
     this.viewController.dismiss();
   }
 
-
   ionViewDidLoad() {
 
   }
-
   // DRIVERS
 
   getItems(ev) {
@@ -72,8 +68,6 @@ export class AddFilterPage {
     );
   }
 
-
-
   // NICKNAMES
 
   getNicknamesHotels(ev) {
@@ -97,6 +91,29 @@ export class AddFilterPage {
       },
       (error) => console.log(error)
     );
+  }
+
+  initializeVehiclesBrand(){
+    this.transferFilterProvider.getAllVehicles().subscribe(
+      (res: any) => {
+        console.log(res);
+        this.vehicles = res;
+        let this_=this;
+        this.vehicles.forEach(function (vehicle: any) {
+          this_.vehiclesBrands.push(vehicle.brand);
+        })
+      }
+    )
+  }
+
+  getBrandVehicles(ev) {
+    var val = ev.target.value;
+
+    if (val && val.trim() != '') {
+      this.filteredVehiclesBrands = this.vehiclesBrands.filter((vehicleBrand) => {
+        return (vehicleBrand.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 
 }

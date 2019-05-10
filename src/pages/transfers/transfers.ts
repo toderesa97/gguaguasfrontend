@@ -10,6 +10,7 @@ import {
 } from 'ionic-angular';
 import {AddFilterPage} from "../add-filter/add-filter";
 import {TransferFilterProvider} from "../../providers/transfer-filter/transfer-filter";
+import {TransferDetailsPage} from "../transfer-details/transfer-details";
 
 @IonicPage()
 @Component({
@@ -42,9 +43,15 @@ export class TransfersPage {
       subscription => subscription.subscribe(
         (res) => {
           console.log("R=> ", res);
+          this.transfers = res;
         },
         (err) => console.error(err)
       )
     )
+  }
+
+  goToDetails(id, table) {
+    const modal = this.modalCtrl.create(TransferDetailsPage, {'id': id, 'table': table});
+    modal.present();
   }
 }

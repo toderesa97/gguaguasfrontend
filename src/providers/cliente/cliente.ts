@@ -42,4 +42,9 @@ export class ClienteProvider {
     return this.http.post<any>(this.url.concat("getAll.php"), param, this.httpOptions);
   }
 
+  getByCif(cif){
+    let param = new HttpParams().append('cif', cif);
+    return this.http.post<any>(this.url.concat("getByCif.php"), param, this.httpOptions);
+  }
+
 }

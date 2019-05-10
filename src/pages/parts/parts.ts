@@ -57,6 +57,7 @@ export class PartsPage {
       }, error => console.log(error)
     );
   }
+
   getDrivers(){
     this.getDriverProvider.getAll().subscribe(
       (res: any) => {
