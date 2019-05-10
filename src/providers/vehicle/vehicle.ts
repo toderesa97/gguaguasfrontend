@@ -2,7 +2,7 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {ServerConfig} from "../serverConfig";
 import { Storage } from "@ionic/storage";
-import {Observable} from "rxjs";
+import {Session} from "../Session";
 
 @Injectable()
 export class VehicleProvider {
@@ -20,71 +20,50 @@ export class VehicleProvider {
     console.log('Hello VehicleProvider Provider');
   }
 
-  async getAllVehicles() {
-    let observable;
-    await this.storage.get("session").then((data) => {
-      let params = new HttpParams()
-        .append("username", data.username)
-        .append("token", data.token);
-
-      observable = this.http.post<any>(this.url.concat("getAll.php"), params, this.httpOptions);
-    });
-    return observable;
+  getAllVehicles() {
+    let params = new HttpParams()
+      .append("username", Session.username)
+      .append("token", Session.token);
+    console.log("getting all", Session.username, Session.token);
+    return this.http.post<any>(this.url.concat("getAll.php"), params, this.httpOptions);
   }
 
-  async add(licensePlate: string, vehicleBrand: string, vehicleSeats: string) {
-    let observable;
-    await this.storage.get("session").then((data) => {
-      let params = new HttpParams()
-        .append("username", data.username)
-        .append("token", data.token)
-        .append("licensePlate", licensePlate)
-        .append("seats", vehicleSeats)
-        .append("brand", vehicleBrand);
-      observable = this.http.post<any>(this.url.concat("add.php"), params, this.httpOptions);
-    });
-    return observable;
+  add(licensePlate: string, vehicleBrand: string, vehicleSeats: string) {
+    let params = new HttpParams()
+      .append("username", Session.username)
+      .append("token", Session.token)
+      .append("licensePlate", licensePlate)
+      .append("seats", vehicleSeats)
+      .append("brand", vehicleBrand);
+    return this.http.post<any>(this.url.concat("add.php"), params, this.httpOptions);
   }
 
-  async delete(licensePlate: string) {
-    let observable: Observable<any>;
-    await this.storage.get("session").then((data) => {
-      let params = new HttpParams()
-        .append("username", data.username)
-        .append("token", data.token)
-        .append("licensePlate", licensePlate);
+  delete(licensePlate: string) {
+    let params = new HttpParams()
+      .append("username", Session.username)
+      .append("token", Session.token)
+      .append("licensePlate", licensePlate);
 
-      observable = this.http.post<any>(this.url.concat("remove.php"), params, this.httpOptions);
-    });
-    return observable;
+    return this.http.post<any>(this.url.concat("remove.php"), params, this.httpOptions);
   }
 
-  async get(licensePlate: string) {
-    let observable;
-    await this.storage.get("session").then((data) => {
-      let params = new HttpParams()
-        .append("username", data.username)
-        .append("token", data.token)
-        .append("licensePlate", licensePlate);
+  get(licensePlate: string) {
+    let params = new HttpParams()
+      .append("username", Session.username)
+      .append("token", Session.token)
+      .append("licensePlate", licensePlate);
 
-      observable = this.http.post<any>(this.url.concat("get.php"), params, this.httpOptions);
-    });
-    return observable;
+    return this.http.post<any>(this.url.concat("get.php"), params, this.httpOptions);
   }
 
-  async updateVehicle(licensePlate: string, vehicleSeats: string, vehicleBrand: string) {
-    console.log("updating...", licensePlate);
-    let observable;
-    await this.storage.get("session").then((data) => {
-      let params = new HttpParams()
-        .append("username", data.username)
-        .append("token", data.token)
-        .append("brand", vehicleBrand)
-        .append("seats", vehicleSeats)
-        .append("licensePlate", licensePlate);
+  updateVehicle(licensePlate: string, vehicleSeats: string, vehicleBrand: string) {
+    let params = new HttpParams()
+      .append("username", Session.username)
+      .append("token", Session.token)
+      .append("brand", vehicleBrand)
+      .append("seats", vehicleSeats)
+      .append("licensePlate", licensePlate);
 
-      observable = this.http.post<any>(this.url.concat("update.php"), params, this.httpOptions);
-    });
-    return observable;
+    return this.http.post<any>(this.url.concat("update.php"), params, this.httpOptions);
   }
 }

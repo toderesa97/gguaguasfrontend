@@ -70,22 +70,18 @@ export class TransferDetailsPage {
 
   showVehicleData(){
     let aux: any[] = [];
-    this.vehicleProvider.get(this.navParams.get('id')).then(
-      (res) => {
-        res.subscribe(
-          (vehicleData)=>{
-            console.log('vehicle',vehicleData);
-            aux.push(vehicleData);
-            aux.map(
-              (key)=>{
-                Object.keys(key).forEach((i)=>{
-                  this.dataKeys.push(i);
-                  this.dataValues.push(key[i]);
-                })
-              }
-            );
+    this.vehicleProvider.get(this.navParams.get('id')).subscribe(
+  (vehicleData)=>{
+        console.log('vehicle',vehicleData);
+        aux.push(vehicleData);
+        aux.map(
+          (key)=>{
+            Object.keys(key).forEach((i)=>{
+              this.dataKeys.push(i);
+              this.dataValues.push(key[i]);
+            })
           }
-        )
+        );
       }
     );
   }
