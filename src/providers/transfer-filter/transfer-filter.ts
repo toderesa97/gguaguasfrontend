@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {ServerConfig} from "../serverConfig";
 import {Storage} from "@ionic/storage";
 import {Observable} from "rxjs";
+import {Session} from "../Session";
 
 @Injectable()
 export class TransferFilterProvider {
@@ -25,7 +26,7 @@ export class TransferFilterProvider {
     await this.storage.get("session").then((data) => {
       let params = new HttpParams()
         .append("username", data.username)
-        .append("token", data.token);
+        .append("token", Session.token);
 
       observable = this.http.post<any>(this.url.concat("getAll.php"), params, this.httpOptions);
     });

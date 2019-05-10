@@ -2,6 +2,7 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {ServerConfig} from "../serverConfig";
 import {Storage} from "@ionic/storage";
+import {Session} from "../Session";
 
 @Injectable()
 export class LoginProvider {
@@ -26,15 +27,12 @@ export class LoginProvider {
     return this.http.post<any>(this.url.concat("login.php"), params, this.httpOptions);
   }
 
-  async logout() {
-    let observable;
-    await this.storage.get("session").then((data) => {
-      let params = new HttpParams()
-        .append("username", data.username)
-        .append("token", data.token);
+  logout() {
+    console.log("Logging out", Session.username, Session.token);
+    let params = new HttpParams()
+      .append("username", Session.username)
+      .append("token", Session.token);
 
-      observable = this.http.post<any>(this.url.concat("logout.php"), params, this.httpOptions);
-    });
-    return observable;
+    return this.http.post<any>(this.url.concat("logout.php"), params, this.httpOptions);
   }
 }
