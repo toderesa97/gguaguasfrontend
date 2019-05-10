@@ -28,22 +28,16 @@ export class TransferFilterProvider {
     console.log('Hello TransferFilterProvider Provider');
   }
 
-  async getAll() {
-    let observable;
-    await this.storage.get("session").then((data) => {
-      let params = new HttpParams()
-        .append("username", data.username)
-        .append("token", Session.token);
+  getAll() {
+    let params = new HttpParams()
+      .append("username", Session.username)
+      .append("token", Session.token);
 
-      observable = this.http.post<any>(this.url.concat("getAll.php"), params, this.httpOptions);
-    });
-    return observable;
+    return this.http.post<any>(this.url.concat("getAll.php"), params, this.httpOptions);
   }
 
-  async createTransfer(transferDate: string, transferTime: string, origin: string,
+  createTransfer(transferDate: string, transferTime: string, origin: string,
                  destiny: string, name: string, seats: string, description: string, selectedDriver: string) {
-    let observable;
-    await this.storage.get("session").then((data) => {
       let params = new HttpParams().append('createTransfer',"")
         .append('name', name)
         .append('destiny', destiny)
@@ -52,9 +46,9 @@ export class TransferFilterProvider {
         .append('transferDate', transferDate)
         .append('transferTime', transferTime)
         .append('description', description)
-        .append('selectedDriver', selectedDriver);
-      observable = this.http.post<any>(this.url.concat("/createTransfer.php"), params,this.httpOptions);
-    });
-
+        .append('selectedDriver', selectedDriver)
+        .append('username', Session.username)
+        .append('token', Session.token);
+      return this.http.post<any>(this.url.concat("/createTransfer.php"), params,this.httpOptions);
   }
 }

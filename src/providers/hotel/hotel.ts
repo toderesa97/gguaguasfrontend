@@ -2,6 +2,7 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {ServerConfig} from "../serverConfig";
+import {Session} from "../Session";
 
 @Injectable()
 export class HotelProvider {
@@ -39,7 +40,10 @@ export class HotelProvider {
   }
 
   getAll(){
-    return this.http.get(this.url.concat("getAll.php"));
+    let param = new HttpParams()
+      .append('username', Session.username)
+      .append("token", Session.token);
+    return this.http.post<any>(this.url.concat("getAll.php"), param, this.httpOptions);
   }
 
   getAllClients(){

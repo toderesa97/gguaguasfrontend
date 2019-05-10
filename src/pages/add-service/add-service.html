@@ -43,12 +43,18 @@
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label>Compañía</ion-label>
-      <ion-input maxlength="500" [(ngModel)]="company" type="text"></ion-input>
+      <ion-label>Hotel contratante</ion-label>
+
+      <ion-select [(ngModel)]="company">
+        <ion-option *ngFor="let hotel of hotels" value="{{hotel.hotelName}}">{{hotel.hotelName}}</ion-option>
+      </ion-select>
+
     </ion-item>
     <ion-item>
-      <ion-label>Dirección de la compañía</ion-label>
-      <ion-input maxlength="500" [(ngModel)]="directionCompany" type="text"></ion-input>
+      <ion-label>Dirección del hotel</ion-label>
+      <ion-input maxlength="500" [(ngModel)]="directionCompany" type="text">
+        {{ getDirectionHotel() }}
+      </ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Fecha del transfer</ion-label>

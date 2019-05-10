@@ -2,6 +2,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {ServerConfig} from "../serverConfig";
 import {Observable} from "rxjs";
+import {Session} from "../Session";
 
 @Injectable()
 export class AddTransfersPartsProvider {
@@ -15,7 +16,11 @@ export class AddTransfersPartsProvider {
   }
 
   getByDate(transferDate){
-      let param = new HttpParams().append('transferDate', transferDate);
+    console.log("Retrieving transfers for date ", transferDate);
+      let param = new HttpParams()
+        .append('transferDate', transferDate)
+        .append('username', Session.username)
+        .append('token', Session.token);
       return this.http.post<any>(this.url.concat("/getByDate.php"), param, this.httpOptions);
   }
 

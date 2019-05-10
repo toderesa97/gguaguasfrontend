@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import {AddServiceProvider} from "../../providers/add-service/add-service-provider";
+import {HotelProvider} from "../../providers/hotel/hotel";
 
 @IonicPage()
 @Component({
@@ -20,9 +21,18 @@ export class AddServicePage {
   description: string;
   vehicle: string;
 
+  private hotels = [];
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public viewController: ViewController,
-              public addServiceProvider: AddServiceProvider) {
+              public addServiceProvider: AddServiceProvider,
+              public hotelProvider: HotelProvider) {
+    this.hotelProvider.getAll().subscribe(
+      (hotels : any) => {
+        console.log(hotels);
+        this.hotels = hotels
+      }
+    )
   }
 
   ionViewDidLoad() {
@@ -50,5 +60,7 @@ export class AddServicePage {
   }
 
 
-
+  getDirectionHotel() {
+    return "C. Marin y Cubas, 19";
+  }
 }

@@ -2,6 +2,7 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {ServerConfig} from "../serverConfig";
+import {Session} from "../Session";
 
 
 @Injectable()
@@ -34,26 +35,34 @@ export class AddServiceProvider {
       .append('transferDate', transferDate)
       .append('transferTime', transferTime)
       .append('description', description)
-      .append('vehicle', vehicle);
+      .append('vehicle', vehicle)
+      .append('username', Session.username)
+      .append('token', Session.token);
 
     return this.http.post<any>(this.url.concat("/add.php"), params,this.httpOptions);
   }
 
   getById(id, vehicle: string){
     let param = new HttpParams().append('id', id)
-      .append('vehicle', vehicle);
+      .append('vehicle', vehicle)
+      .append("username", Session.username)
+      .append("token", Session.token);
     return this.http.post<any>(this.url.concat("/getById.php"), param, this.httpOptions);
   }
 
   getAll(vehicle: string){
     let param = new HttpParams().append('all',"")
-      .append('vehicle',vehicle);
+      .append('vehicle',vehicle)
+      .append('username',Session.username)
+      .append('token',Session.token);
     return this.http.post<any>(this.url.concat("/getAll.php"), param, this.httpOptions);
   }
 
   deleteById(id, vehicle: string){
     let param = new HttpParams().append('id', id)
-      .append('vehicle', vehicle);
+      .append('vehicle', vehicle)
+      .append('username', Session.username)
+      .append('token', Session.token);
     return this.http.post<any>(this.url.concat("/remove.php"), param, this.httpOptions);
   }
 
@@ -71,7 +80,9 @@ export class AddServiceProvider {
       .append('transferDate', transferDate)
       .append('transferTime', transferTime)
       .append('description', description)
-      .append('vehicle', vehicle);
+      .append('vehicle', vehicle)
+      .append('username', Session.username)
+      .append('token', Session.token);
     return this.http.post<any>(this.url.concat("/modify.php"), param, this.httpOptions);
   }
 }

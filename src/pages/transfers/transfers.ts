@@ -38,13 +38,11 @@ export class TransfersPage {
   }
 
   retrieveAllTransfers() {
-    this.transferFilterProvider.getAll().then(
-      subscription => subscription.subscribe(
-        (res) => {
-          console.log("R=> ", res);
-        },
-        (err) => console.error(err)
-      )
+    this.transferFilterProvider.getAll().subscribe(
+      (res) => {
+        console.log("R=> ", res);
+      },
+      (err) => console.error(err)
     )
   }
 }
