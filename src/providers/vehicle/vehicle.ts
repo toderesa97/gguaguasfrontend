@@ -2,6 +2,7 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {ServerConfig} from "../serverConfig";
 import { Storage } from "@ionic/storage";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class VehicleProvider {
@@ -46,7 +47,7 @@ export class VehicleProvider {
   }
 
   async delete(licensePlate: string) {
-    let observable;
+    let observable: Observable<any>;
     await this.storage.get("session").then((data) => {
       let params = new HttpParams()
         .append("username", data.username)

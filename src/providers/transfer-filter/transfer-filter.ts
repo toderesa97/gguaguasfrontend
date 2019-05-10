@@ -4,13 +4,6 @@ import {ServerConfig} from "../serverConfig";
 import {Storage} from "@ionic/storage";
 import {Observable} from "rxjs";
 
-
-/*
-  Generated class for the TransferFilterProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class TransferFilterProvider {
 

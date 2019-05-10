@@ -41,6 +41,7 @@ import {AddHotelPage} from "../pages/add-hotel/add-hotel";
 import { HotelProvider } from '../providers/hotel/hotel';
 import {SettingsPage} from "../pages/settings/settings";
 import { TransferFilterProvider } from '../providers/transfer-filter/transfer-filter';
+import {TransferDetailsPage} from "../pages/transfer-details/transfer-details";
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { TransferFilterProvider } from '../providers/transfer-filter/transfer-fi
     AddFilterPage,
     LoginPage,
     AddAppUserPage,
-    SettingsPage
+    SettingsPage,
+    TransferDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -96,7 +98,8 @@ import { TransferFilterProvider } from '../providers/transfer-filter/transfer-fi
     AddFilterPage,
     LoginPage,
     AddAppUserPage,
-    SettingsPage
+    SettingsPage,
+    TransferDetailsPage
   ],
   providers: [
     StatusBar,
