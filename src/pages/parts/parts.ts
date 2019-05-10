@@ -70,26 +70,22 @@ export class PartsPage {
     this.hotelProvider.getAll().subscribe(
       (res: any) => {
         console.log(res);
-        this.drivers = res;
+        this.hotels = res;
       }, error => console.log(error)
     );
   }
   getVehicle(){
-    this.vehicleProvider.getAllVehicles().then(
-      (observable) => {
-        observable.subscribe(
+    this.vehicleProvider.getAllVehicles().subscribe(
           (vehicles) => this.vehicles = vehicles,
           (error) => console.error(error)
-        )}
-    ).catch(
-      (err) => console.error(err)
     )
   }
+
   getClient(){
     this.clientProvider.getAll().subscribe(
       (res: any) => {
         console.log(res);
-        this.drivers = res;
+        this.clients = res;
       }, error => console.log(error)
     );
   }
@@ -117,10 +113,10 @@ export class PartsPage {
   }
 
   selectVehicle(vehicle: string) {
-    this.hotel = vehicle;
+    this.vehicle = vehicle;
   }
 
   selectClient(client: string) {
-    this.hotel = client;
+    this.client = client;
   }
 }

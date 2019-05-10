@@ -49,7 +49,9 @@ export class AddTransfersPartsProvider {
       .append('driver', driver)
       .append('hotel', hotel)
       .append('vehicle', vehicle)
-      .append('client', client);
+      .append('client', client)
+      .append('username', Session.username)
+      .append('token', Session.token);
 
     return this.http.post<any>(this.url.concat("/addTransfer.php"), params, this.httpOptions);
   }

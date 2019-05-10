@@ -2,6 +2,7 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {ServerConfig} from "../serverConfig";
+import {Session} from "../Session";
 
 @Injectable()
 export class ClienteProvider {
@@ -38,7 +39,9 @@ export class ClienteProvider {
   }
 
   getAll(){
-    let param = new HttpParams().append('all',"");
+    let param = new HttpParams().append('all',"")
+      .append('username', Session.username)
+      .append('token', Session.token);
     return this.http.post<any>(this.url.concat("getAll.php"), param, this.httpOptions);
   }
 
