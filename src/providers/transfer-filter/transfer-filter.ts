@@ -2,7 +2,6 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {ServerConfig} from "../serverConfig";
 import {Storage} from "@ionic/storage";
-import {Observable} from "rxjs";
 import {Session} from "../Session";
 
 @Injectable()
@@ -61,6 +60,42 @@ export class TransferFilterProvider {
 
   getAllVehicles(){
     return this.http.get(this.url.concat("getAllVehicles.php"));
+  }
+
+  async getDriver(driver: string) {
+    let observable;
+    await this.storage.get("session").then((data) => {
+      let params = new HttpParams()
+        .append("username", data.username)
+        .append("token", Session.token)
+        .append("driver", driver);
+      observable = this.http.post<any>(this.url.concat("getDriver.php"), params, this.httpOptions);
+    });
+    return observable;
+  }
+
+  async getHotel(hotel: string) {
+    let observable;
+    await this.storage.get("session").then((data) => {
+      let params = new HttpParams()
+        .append("username", data.username)
+        .append("token", Session.token)
+        .append("hotel", hotel);
+      observable = this.http.post<any>(this.url.concat("getHotel.php"), params, this.httpOptions);
+    });
+    return observable;
+  }
+
+  async getVehicle(vehicle: string) {
+    let observable;
+    await this.storage.get("session").then((data) => {
+      let params = new HttpParams()
+        .append("username", data.username)
+        .append("token", Session.token)
+        .append("vehicle", vehicle);
+      observable = this.http.post<any>(this.url.concat("getVehicle.php"), params, this.httpOptions);
+    });
+    return observable;
   }
 
 }

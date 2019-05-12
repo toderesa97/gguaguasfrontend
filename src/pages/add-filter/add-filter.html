@@ -36,6 +36,7 @@
                         (onChange)="portChange($event)">
       </ionic-selectable>
     </ion-item>
+    <button ion-button (click)="getDriverValue(driver)">Accept</button>
   </div>
 
   <div *ngIf="filterType === 'date'">
@@ -72,22 +73,22 @@
   </div>
 
   <div *ngIf="filterType === 'hotel'">
-    <ion-searchbar (ionInput)="getNicknamesHotels($event)"></ion-searchbar>
-    <ion-list>
-      <ion-item (click)="getInputValue(nickname)" *ngFor="let nickname of filteredHotelsNicknames" >
-        {{ nickname }}
-      </ion-item>
-    </ion-list>
-    <button ion-button (click)="getInputValue(filteredHotelsNicknames[0])">Accept</button>
+    <ion-item>
+      <ion-label>Hotel:</ion-label>
+      <ionic-selectable item-content [(ngModel)]="hotel" [items]="hotelsNickname" [canSearch]="true"
+                        (onChange)="portChange($event)">
+      </ionic-selectable>
+    </ion-item>
+    <button ion-button (click)="getHotelValue(hotel)">Accept</button>
   </div>
 
   <div *ngIf="filterType === 'vehicle'">
-    <ion-searchbar (ionInput)="getBrandVehicles($event)"></ion-searchbar>
-    <ion-list>
-      <ion-item (click)="getInputValue(brand)" *ngFor="let brand of filteredVehiclesBrands">
-        {{ brand }}
-      </ion-item>
-    </ion-list>
-    <button ion-button (click)="getInputValue(filteredVehiclesBrands[0])">Accept</button>
+    <ion-item>
+      <ion-label>Marca:</ion-label>
+      <ionic-selectable item-content [(ngModel)]="vehicle" [items]="vehiclesBrands" [canSearch]="true"
+                        (onChange)="portChange($event)">
+      </ionic-selectable>
+    </ion-item>
+    <button ion-button (click)="getVehicleValue(vehicle)">Accept</button>
   </div>
 </ion-content>

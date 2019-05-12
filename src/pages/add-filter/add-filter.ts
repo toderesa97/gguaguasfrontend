@@ -3,13 +3,16 @@ import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular
 import 'rxjs/add/operator/debounceTime';
 import {TransferFilterProvider} from "../../providers/transfer-filter/transfer-filter";
 import { IonicSelectableComponent } from 'ionic-selectable';
+import { Events } from 'ionic-angular';
 
 @IonicPage()
 @Component({
   selector: 'page-add-filter',
   templateUrl: 'add-filter.html',
 })
-
+@Component({
+  templateUrl: 'transfer.html',
+})
 
 export class AddFilterPage implements OnInit {
   filterType: string;
@@ -19,26 +22,20 @@ export class AddFilterPage implements OnInit {
 
   drivers: string[];
   driversName: string[] = [];
-  private filteredDriversNames: string[];
 
   hotels: string[];
   hotelsNickname: string[] = [];
-  private filteredHotelsNicknames: string[];
 
   vehicles: string[];
   vehiclesBrands: string[] = [];
-  private filteredVehiclesBrands: string[];
 
-
+  transfers: string[];
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public viewController: ViewController,
-              public transferFilterProvider: TransferFilterProvider) {
-    //this.initializeItems();
-    this.initializeNicknames();
-    this.initializeVehiclesBrand();
-
+              public transferFilterProvider: TransferFilterProvider,
+              public events: Events) {
   }
 
   closeModal() {
@@ -48,79 +45,6 @@ export class AddFilterPage implements OnInit {
   ionViewDidLoad() {
 
   }
-  // DRIVERS
-
-  getItems(ev) {
-    var val = ev.target.value;
-
-    if (val && val.trim() != '') {
-      this.filteredDriversNames = this.driversName.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
-  }
-
-  initializeItems() {
-    this.transferFilterProvider.getAllDrivers().subscribe(
-      (res: any) => {
-        this.drivers = res;
-        let this_=this;
-        this.drivers.forEach(function (driver: any) {
-          this_.driversName.push(driver.name.concat(" ").concat(driver.surname));
-        })
-      },
-      (error) => console.log(error)
-    );
-  }
-
-  // NICKNAMES
-
-  getNicknamesHotels(ev) {
-    var val = ev.target.value;
-
-    if (val && val.trim() != '') {
-      this.filteredHotelsNicknames = this.hotelsNickname.filter((itemNickname) => {
-        return (itemNickname.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
-  }
-
-  initializeNicknames() {
-    this.transferFilterProvider.getAllHotels().subscribe(
-      (res: any) => {
-        this.hotels = res;
-        let this_=this;
-        this.hotels.forEach(function (hotel: any) {
-          this_.hotelsNickname.push(hotel.nickname);
-        })
-      },
-      (error) => console.log(error)
-    );
-  }
-
-  initializeVehiclesBrand(){
-    this.transferFilterProvider.getAllVehicles().subscribe(
-      (res: any) => {
-        console.log(res);
-        this.vehicles = res;
-        let this_=this;
-        this.vehicles.forEach(function (vehicle: any) {
-          this_.vehiclesBrands.push(vehicle.brand);
-        })
-      }
-    )
-  }
-
-  getBrandVehicles(ev) {
-    var val = ev.target.value;
-
-    if (val && val.trim() != '') {
-      this.filteredVehiclesBrands = this.vehiclesBrands.filter((vehicleBrand) => {
-        return (vehicleBrand.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
-  }
-
 
   ngOnInit() {
 
@@ -134,6 +58,29 @@ export class AddFilterPage implements OnInit {
       },
       (error) => console.log(error)
     );
+
+    this.transferFilterProvider.getAllHotels().subscribe(
+      (res: any) => {
+        this.hotels = res;
+        let this_=this;
+        this.hotels.forEach(function (hotel: any) {
+          this_.hotelsNickname.push(hotel.nickname);
+        })
+      },
+      (error) => console.log(error)
+    );
+
+    this.transferFilterProvider.getAllVehicles().subscribe(
+      (res: any) => {
+        console.log(res);
+        this.vehicles = res;
+        let this_=this;
+        this.vehicles.forEach(function (vehicle: any) {
+          this_.vehiclesBrands.push(vehicle.brand);
+        })
+      }
+    )
+
   }
 
   portChange(event: {
@@ -141,6 +88,21 @@ export class AddFilterPage implements OnInit {
     value: any
   }) {
     console.log('driver:', event.value);
+  }
+
+  getDriverValue(value) {
+    this.closeModal();
+    this.events.publish('driver', value);
+  }
+
+  getHotelValue(value) {
+    this.closeModal();
+    this.events.publish('hotel', value);
+  }
+
+  getVehicleValue(value) {
+    this.closeModal();
+    this.events.publish('vehicle', value);
   }
 
 }

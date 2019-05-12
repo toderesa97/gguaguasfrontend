@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import {
-  AlertController,
   Events,
   IonicPage,
-  LoadingController,
   ModalController,
   NavController,
   NavParams
@@ -24,9 +22,18 @@ export class TransfersPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public modalCtrl: ModalController,
               public transferFilterProvider: TransferFilterProvider,
-              public events:Events,
-              public loadingCtrl: LoadingController,
-              public alertCtrl:AlertController) {
+              public events:Events) {
+    events.subscribe('driver', (driver) => {
+      this.getDriverValue(driver);
+    });
+
+    events.subscribe('hotel', (hotel) => {
+     this.getHotelValue(hotel);
+    });
+
+    events.subscribe('vehicle', (vehicle) => {
+        this.getVehicleValue(vehicle);
+    });
   }
 
   ionViewDidLoad() {
@@ -54,4 +61,44 @@ export class TransfersPage {
     const modal = this.modalCtrl.create(TransferDetailsPage, {'id': id, 'table': table});
     modal.present();
   }
+
+  getDriverValue(value) {
+    this.transferFilterProvider.getDriver(value).then(
+      subscription => subscription.subscribe(
+        (res) => {
+          console.log("R=> ", res);
+          console.log(value);
+          this.transfers = res;
+        },
+        (err) => console.error(err)
+      )
+    )
+  }
+
+  getHotelValue(value) {
+    this.transferFilterProvider.getHotel(value).then(
+      subscription => subscription.subscribe(
+        (res) => {
+          console.log("R=> ", res);
+          console.log(value);
+          this.transfers = res;
+        },
+        (err) => console.error(err)
+      )
+    )
+  }
+
+  getVehicleValue(value) {
+    this.transferFilterProvider.getVehicle(value).then(
+      subscription => subscription.subscribe(
+        (res) => {
+          console.log("R=> ", res);
+          console.log(value);
+          this.transfers = res;
+        },
+        (err) => console.error(err)
+      )
+    )
+  }
+
 }
