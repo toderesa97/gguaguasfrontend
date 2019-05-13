@@ -2,16 +2,8 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {ServerConfig} from "../serverConfig";
 import {Storage} from "@ionic/storage";
-import {Observable} from "rxjs";
 import {Session} from "../Session";
 
-
-/*
-  Generated class for the TransferFilterProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class TransferFilterProvider {
 
@@ -32,7 +24,6 @@ export class TransferFilterProvider {
     let params = new HttpParams()
       .append("username", Session.username)
       .append("token", Session.token);
-
     return this.http.post<any>(this.url.concat("getAll.php"), params, this.httpOptions);
   }
 
@@ -51,4 +42,17 @@ export class TransferFilterProvider {
         .append('token', Session.token);
       return this.http.post<any>(this.url.concat("/createTransfer.php"), params,this.httpOptions);
   }
+
+  getAllDrivers(){
+    return this.http.get(this.url.concat("getAllDrivers.php"));
+  }
+
+  getAllHotels(){
+    return this.http.get(this.url.concat("getAllHotels.php"));
+  }
+
+  getAllVehicles(){
+    return this.http.get(this.url.concat("getAllVehicles.php"));
+  }
+
 }

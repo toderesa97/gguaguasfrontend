@@ -52,9 +52,7 @@ export class VehicleProvider {
       .append("username", Session.username)
       .append("token", Session.token)
       .append("licensePlate", licensePlate);
-
     return this.http.post<any>(this.url.concat("get.php"), params, this.httpOptions);
-
   }
 
   updateVehicle(licensePlate: string, vehicleSeats: string, vehicleBrand: string) {

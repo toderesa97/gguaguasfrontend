@@ -35,6 +35,4 @@ export class LoginProvider {
 
     return this.http.post<any>(this.url.concat("logout.php"), params, this.httpOptions);
   }
-
-
 }

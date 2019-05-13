@@ -18,5 +18,77 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-row text-center>
+    <button ion-button [color]="filterType === 'driver' ? 'secondary' : 'primary' "
+            (click)="filterType='driver'">Conductor</button>
+    <button ion-button [color]="filterType === 'date' ? 'secondary' : 'primary' "
+            (click)="filterType='date'">Fecha</button>
+    <button ion-button [color]="filterType === 'hotel' ? 'secondary' : 'primary' "
+            (click)="filterType='hotel'">Hotel</button>
+    <button ion-button [color]="filterType === 'vehicle' ? 'secondary' : 'primary' "
+            (click)="filterType='vehicle'">Vehículo</button>
+  </ion-row>
+
+  <div *ngIf="filterType === 'driver'">
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-list>
+      <ion-item *ngFor="let driver of filteredDriversNames">
+        {{ driver }}
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="filterType === 'date'">
+    <ion-item>
+      <ion-label>¿Es en rango o fija?</ion-label>
+      <ion-select [(ngModel)]="dateType">
+        <ion-option value="range">Rango</ion-option>
+        <ion-option value="fixed">Única</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <div *ngIf="dateType==='range'" style="display: flex;">
+      <ion-item>
+        <ion-label>Desde</ion-label>
+        <ion-datetime displayFormat="YYYY-M-D" pickerFormat="YYYY-M-D"
+                      [(ngModel)]="transferFromDate" placeholder="Seleccione una fecha"
+        ></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Hasta</ion-label>
+        <ion-datetime displayFormat="YYYY-M-D" pickerFormat="YYYY-M-D"
+                      [(ngModel)]="transferToDate" placeholder="Seleccione una fecha"
+        ></ion-datetime>
+      </ion-item>
+    </div>
+    <div *ngIf="dateType==='fixed'">
+      <ion-item>
+        <ion-label>Seleccionar fecha</ion-label>
+        <ion-datetime displayFormat="YYYY-M-D" pickerFormat="YYYY-M-D"
+                      [(ngModel)]="transferFixedDate" placeholder="Seleccione una fecha"
+        ></ion-datetime>
+      </ion-item>
+    </div>
+  </div>
+
+  <div *ngIf="filterType === 'hotel'">
+    <ion-searchbar (ionInput)="getNicknamesHotels($event)"></ion-searchbar>
+    <ion-list>
+      <ion-item *ngFor="let nickname of filteredHotelsNicknames">
+        {{ nickname }}
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="filterType === 'vehicle'">
+    <ion-searchbar (ionInput)="getBrandVehicles($event)"></ion-searchbar>
+    <ion-list>
+      <ion-item *ngFor="let brand of filteredVehiclesBrands">
+        {{ brand }}
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <button ion-button (click)="submitFilter()">Accept</button>
 
 </ion-content>
