@@ -65,4 +65,11 @@ export class VehicleProvider {
 
     return this.http.post<any>(this.url.concat("update.php"), params, this.httpOptions);
   }
+
+  getAll(){
+    let params = new HttpParams().append('username', Session.username)
+      .append('token', Session.token);
+    return this.http.post<any>(this.url.concat("getAll.php"),params,this.httpOptions);
+  }
+
 }

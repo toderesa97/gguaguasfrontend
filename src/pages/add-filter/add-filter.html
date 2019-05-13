@@ -30,12 +30,13 @@
   </ion-row>
 
   <div *ngIf="filterType === 'driver'">
-    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-    <ion-list>
-      <ion-item *ngFor="let driver of filteredDriversNames">
-        {{ driver }}
-      </ion-item>
-    </ion-list>
+    <ion-item>
+      <ion-label>Conductor:</ion-label>
+      <ionic-selectable item-content [(ngModel)]="driver" [items]="driversName" [canSearch]="true"
+                        (onChange)="portChange($event)">
+      </ionic-selectable>
+    </ion-item>
+    <button ion-button (click)="getDriverValue(driver)">Accept</button>
   </div>
 
   <div *ngIf="filterType === 'date'">
@@ -60,6 +61,7 @@
                       [(ngModel)]="transferToDate" placeholder="Seleccione una fecha"
         ></ion-datetime>
       </ion-item>
+      <button ion-button (click)="getTransferByRangeDate(transferFromDate,transferToDate)">Accept</button>
     </div>
     <div *ngIf="dateType==='fixed'">
       <ion-item>
@@ -68,27 +70,27 @@
                       [(ngModel)]="transferFixedDate" placeholder="Seleccione una fecha"
         ></ion-datetime>
       </ion-item>
+      <button ion-button (click)="getTransferByDate(transferFixedDate)">Accept</button>
     </div>
   </div>
 
   <div *ngIf="filterType === 'hotel'">
-    <ion-searchbar (ionInput)="getNicknamesHotels($event)"></ion-searchbar>
-    <ion-list>
-      <ion-item *ngFor="let nickname of filteredHotelsNicknames">
-        {{ nickname }}
-      </ion-item>
-    </ion-list>
+    <ion-item>
+      <ion-label>Hotel:</ion-label>
+      <ionic-selectable item-content [(ngModel)]="hotel" [items]="hotelsNickname" [canSearch]="true"
+                        (onChange)="portChange($event)">
+      </ionic-selectable>
+    </ion-item>
+    <button ion-button (click)="getHotelValue(hotel)">Accept</button>
   </div>
 
   <div *ngIf="filterType === 'vehicle'">
-    <ion-searchbar (ionInput)="getBrandVehicles($event)"></ion-searchbar>
-    <ion-list>
-      <ion-item *ngFor="let brand of filteredVehiclesBrands">
-        {{ brand }}
-      </ion-item>
-    </ion-list>
+    <ion-item>
+      <ion-label>Vehículo:</ion-label>
+      <ionic-selectable item-content [(ngModel)]="vehicle" [items]="vehiclesBrands" [canSearch]="true"
+                        (onChange)="portChange($event)">
+      </ionic-selectable>
+    </ion-item>
+    <button ion-button (click)="getVehicleValue(vehicle)">Accept</button>
   </div>
-
-  <button ion-button (click)="submitFilter()">Accept</button>
-
 </ion-content>

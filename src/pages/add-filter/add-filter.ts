@@ -1,15 +1,24 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import 'rxjs/add/operator/debounceTime';
 import {TransferFilterProvider} from "../../providers/transfer-filter/transfer-filter";
+import { IonicSelectableComponent } from 'ionic-selectable';
+import { Events } from 'ionic-angular';
+import {DriverProvider} from "../../providers/driver/driver";
+import {VehicleProvider} from "../../providers/vehicle/vehicle";
+import {HotelProvider} from "../../providers/hotel/hotel";
+
 
 @IonicPage()
 @Component({
   selector: 'page-add-filter',
   templateUrl: 'add-filter.html',
 })
+@Component({
+  templateUrl: 'transfer.html',
+})
 
-export class AddFilterPage {
+export class AddFilterPage implements OnInit {
   filterType: string;
   dateType: string;
   transferFromDate: string;
@@ -17,23 +26,23 @@ export class AddFilterPage {
 
   drivers: string[];
   driversName: string[] = [];
-  private filteredDriversNames: string[];
 
   hotels: string[];
   hotelsNickname: string[] = [];
-  private filteredHotelsNicknames: string[];
 
   vehicles: string[];
   vehiclesBrands: string[] = [];
-  private filteredVehiclesBrands: string[];
+
+  transfers: string[];
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public viewController: ViewController,
-              public transferFilterProvider: TransferFilterProvider) {
-    this.initializeItems();
-    this.initializeNicknames();
-    this.initializeVehiclesBrand();
+              public transferFilterProvider: TransferFilterProvider,
+              public events: Events,
+              public driverProvider : DriverProvider,
+              public hotelProvider : HotelProvider,
+              public vehicleProvider : VehicleProvider) {
   }
 
   closeModal() {
@@ -43,20 +52,10 @@ export class AddFilterPage {
   ionViewDidLoad() {
 
   }
-  // DRIVERS
 
-  getItems(ev) {
-    var val = ev.target.value;
+  ngOnInit() {
 
-    if (val && val.trim() != '') {
-      this.filteredDriversNames = this.driversName.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
-  }
-
-  initializeItems() {
-    this.transferFilterProvider.getAllDrivers().subscribe(
+    this.driverProvider.getAll().subscribe(
       (res: any) => {
         this.drivers = res;
         let this_=this;
@@ -66,22 +65,8 @@ export class AddFilterPage {
       },
       (error) => console.log(error)
     );
-  }
 
-  // NICKNAMES
-
-  getNicknamesHotels(ev) {
-    var val = ev.target.value;
-
-    if (val && val.trim() != '') {
-      this.filteredHotelsNicknames = this.hotelsNickname.filter((itemNickname) => {
-        return (itemNickname.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
-  }
-
-  initializeNicknames() {
-    this.transferFilterProvider.getAllHotels().subscribe(
+    this.hotelProvider.getAll().subscribe(
       (res: any) => {
         this.hotels = res;
         let this_=this;
@@ -91,29 +76,53 @@ export class AddFilterPage {
       },
       (error) => console.log(error)
     );
-  }
 
-  initializeVehiclesBrand(){
-    this.transferFilterProvider.getAllVehicles().subscribe(
+    this.vehicleProvider.getAll().subscribe(
       (res: any) => {
         console.log(res);
         this.vehicles = res;
         let this_=this;
         this.vehicles.forEach(function (vehicle: any) {
-          this_.vehiclesBrands.push(vehicle.brand);
-        })
+          this_.vehiclesBrands.push(vehicle.licensePlate.concat(" (").concat(vehicle.brand).concat(")"));
+        });
       }
     )
+
   }
 
-  getBrandVehicles(ev) {
-    var val = ev.target.value;
-
-    if (val && val.trim() != '') {
-      this.filteredVehiclesBrands = this.vehiclesBrands.filter((vehicleBrand) => {
-        return (vehicleBrand.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
+  portChange(event: {
+    component: IonicSelectableComponent,
+    value: any
+  }) {
+    console.log('driver:', event.value);
   }
 
+  getDriverValue(value) {
+    this.closeModal();
+    this.events.publish('driver', value);
+  }
+
+  getHotelValue(value) {
+    this.closeModal();
+    this.events.publish('hotel', value);
+  }
+
+  getTransferByDate(value) {
+    this.closeModal();
+    this.events.publish('transferFixedDate', value);
+  }
+
+  getVehicleValue(value) {
+    this.closeModal();
+    console.log("------> ", value, value.split(" ")[0]);
+    this.events.publish('vehicle', value.split(" ")[0]);
+  }
+
+
+  getTransferByRangeDate(transferFromDate: string, transferToDate: string) {
+    this.closeModal();
+    this.events.publish('transferRangeDate', {
+      from : transferFromDate, to : transferToDate
+    });
+  }
 }

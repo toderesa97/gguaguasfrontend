@@ -43,6 +43,8 @@ import {SettingsPage} from "../pages/settings/settings";
 import { TransferFilterProvider } from '../providers/transfer-filter/transfer-filter';
 import {TransferDetailsPage} from "../pages/transfer-details/transfer-details";
 
+import { IonicSelectableModule } from 'ionic-selectable';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -73,7 +75,8 @@ import {TransferDetailsPage} from "../pages/transfer-details/transfer-details";
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    IonicSelectableModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
