@@ -57,6 +57,7 @@ export class TransfersPage {
     this.transferFilterProvider.getAll().subscribe(
       (res) => {
         console.log("R=> ", res);
+        this.transfers = res;
       },
       (err) => console.error(err)
     )
