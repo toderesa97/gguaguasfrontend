@@ -28,7 +28,15 @@ export class TransfersPage {
     });
 
     events.subscribe('hotel', (hotel) => {
-     this.getHotelValue(hotel);
+      this.getHotelValue(hotel);
+    });
+
+    events.subscribe('transferFixedDate', (transferFixedDate) => {
+     this.getTransferByDate(transferFixedDate);
+    });
+
+    events.subscribe('transferRangeDate', (transferRangeDate) => {
+      this.getTransferByRangeDate(transferRangeDate);
     });
 
     events.subscribe('vehicle', (vehicle) => {
@@ -72,6 +80,28 @@ export class TransfersPage {
         },
         (err) => console.error(err)
       )
+    )
+  }
+
+  getTransferByDate(value) {
+    this.transferFilterProvider.getByDate(value).subscribe(
+       (res) => {
+          console.log("R=> ", res);
+          console.log(value);
+          this.transfers = res;
+        },
+        (err) => console.error(err)
+      )
+  }
+
+  getTransferByRangeDate(value) {
+    this.transferFilterProvider.getByRangeDate(value.from, value.to).subscribe(
+      (res) => {
+        console.log("R=> ", res);
+        console.log(value);
+        this.transfers = res;
+      },
+      (err) => console.error(err)
     )
   }
 

@@ -4,6 +4,10 @@ import 'rxjs/add/operator/debounceTime';
 import {TransferFilterProvider} from "../../providers/transfer-filter/transfer-filter";
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { Events } from 'ionic-angular';
+import {DriverProvider} from "../../providers/driver/driver";
+import {VehicleProvider} from "../../providers/vehicle/vehicle";
+import {HotelProvider} from "../../providers/hotel/hotel";
+
 
 @IonicPage()
 @Component({
@@ -35,7 +39,10 @@ export class AddFilterPage implements OnInit {
               public navParams: NavParams,
               public viewController: ViewController,
               public transferFilterProvider: TransferFilterProvider,
-              public events: Events) {
+              public events: Events,
+              public driverProvider : DriverProvider,
+              public hotelProvider : HotelProvider,
+              public vehicleProvider : VehicleProvider) {
   }
 
   closeModal() {
@@ -48,7 +55,7 @@ export class AddFilterPage implements OnInit {
 
   ngOnInit() {
 
-    this.transferFilterProvider.getAllDrivers().subscribe(
+    this.driverProvider.getAll().subscribe(
       (res: any) => {
         this.drivers = res;
         let this_=this;
@@ -59,7 +66,7 @@ export class AddFilterPage implements OnInit {
       (error) => console.log(error)
     );
 
-    this.transferFilterProvider.getAllHotels().subscribe(
+    this.hotelProvider.getAll().subscribe(
       (res: any) => {
         this.hotels = res;
         let this_=this;
@@ -70,14 +77,14 @@ export class AddFilterPage implements OnInit {
       (error) => console.log(error)
     );
 
-    this.transferFilterProvider.getAllVehicles().subscribe(
+    this.vehicleProvider.getAll().subscribe(
       (res: any) => {
         console.log(res);
         this.vehicles = res;
         let this_=this;
         this.vehicles.forEach(function (vehicle: any) {
-          this_.vehiclesBrands.push(vehicle.brand);
-        })
+          this_.vehiclesBrands.push(vehicle.licensePlate.concat(" (").concat(vehicle.brand).concat(")"));
+        });
       }
     )
 
@@ -100,9 +107,22 @@ export class AddFilterPage implements OnInit {
     this.events.publish('hotel', value);
   }
 
-  getVehicleValue(value) {
+  getTransferByDate(value) {
     this.closeModal();
-    this.events.publish('vehicle', value);
+    this.events.publish('transferFixedDate', value);
   }
 
+  getVehicleValue(value) {
+    this.closeModal();
+    console.log("------> ", value, value.split(" ")[0]);
+    this.events.publish('vehicle', value.split(" ")[0]);
+  }
+
+
+  getTransferByRangeDate(transferFromDate: string, transferToDate: string) {
+    this.closeModal();
+    this.events.publish('transferRangeDate', {
+      from : transferFromDate, to : transferToDate
+    });
+  }
 }

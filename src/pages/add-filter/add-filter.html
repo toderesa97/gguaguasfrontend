@@ -61,6 +61,7 @@
                       [(ngModel)]="transferToDate" placeholder="Seleccione una fecha"
         ></ion-datetime>
       </ion-item>
+      <button ion-button (click)="getTransferByRangeDate(transferFromDate,transferToDate)">Accept</button>
     </div>
     <div *ngIf="dateType==='fixed'">
       <ion-item>
@@ -69,6 +70,7 @@
                       [(ngModel)]="transferFixedDate" placeholder="Seleccione una fecha"
         ></ion-datetime>
       </ion-item>
+      <button ion-button (click)="getTransferByDate(transferFixedDate)">Accept</button>
     </div>
   </div>
 
@@ -84,7 +86,7 @@
 
   <div *ngIf="filterType === 'vehicle'">
     <ion-item>
-      <ion-label>Marca:</ion-label>
+      <ion-label>Vehículo:</ion-label>
       <ionic-selectable item-content [(ngModel)]="vehicle" [items]="vehiclesBrands" [canSearch]="true"
                         (onChange)="portChange($event)">
       </ionic-selectable>
